@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="runningGooDAOMapper">
+	
+	<select id="getRunningGooList" resultType="com.dogether.domain.RunningGooVO">
+		SELECT * FROM runninggoo GROUP BY RoomNumber ORDER BY RoomNumber DESC;
+	</select>
+	
+	<select id="getRunningGooRoomCount" resultType="integer">
+		SELECT COUNT(*) FROM runninggoo;
+	</select>
+
+</mapper>
