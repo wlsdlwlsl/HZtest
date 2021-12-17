@@ -24,10 +24,9 @@
         <div id="sidebar" tabindex="0" style="overflow: hidden; outline: none;">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-<!--                 <a href="javascript:;" class="active"></a> -->
             	<ul class="sidebar-menu" style="padding:25px">
                     <li><a href="adminpage.do">첫페이지</a></li>
-                    <li><a href="runninggoomng.do">런닝구 관리</a></li>
+                    <li><a href="adminRNG.do">런닝구 관리</a></li>
                     <li><a href="boastmng.do">자랑하기 관리</a></li>
                     <li><a href="membermng.do">회원 관리</a></li>
                     <li><a href="shoppingmng">쇼핑몰 관리</a></li>
@@ -56,14 +55,12 @@
                                 <a id="runninggooSort" href="runninggooSort.do">정렬보기</a>
                             </div>  
                             <div class="float-right">
-                             <!--    <nav aria-label="Page navigation example"> -->
-                                    <ul class="pagination pagination-sm mb-0">
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">»</a></li>
-                                    </ul>
-                               <!--  </nav> -->
+                                <ul class="pagination pagination-sm mb-0">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">»</a></li>
+                                </ul>
                             </div>
                         </div>
                     </section> <!-- end 상단 정렬 메뉴 --> 
@@ -73,9 +70,6 @@
                             <section class="card">
                                 <div class="pro-img-box"></div>
                                 <div class="card-body text-center">
-                                    <!-- <div class="runninggooManageSort">
-                                       	 런닝구 리스트를 정렬 탭을 만들 예정
-                                    </div> -->
                                     <div class="runninggooManageList">
                                         	런닝구 리스트를 띄울 예정
                                      	    forEach로 db값 불러오기

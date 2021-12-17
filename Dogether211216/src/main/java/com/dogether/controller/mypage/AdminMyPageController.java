@@ -23,8 +23,8 @@ public class AdminMyPageController {
 	}
 	
 	// 2번 런닝구 목록 보기
-	@RequestMapping("runninggoomng.do")
-	public void rngmng(RunningGooVO vo, Model m) {		
+	@RequestMapping("adminRNG.do")
+	public void adminRNG(RunningGooVO vo, Model m) {		
 		List<RunningGooVO> voList = runningGooService.getRNRoomList(vo);
 		m.addAttribute("runningGooList", voList);
 		System.out.println("런닝구 리스트 전달완료!!");

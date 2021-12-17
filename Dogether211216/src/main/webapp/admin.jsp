@@ -18,16 +18,14 @@
 	<script src="./resources/js/admin/common-scripts.js"></script>
 </head>
 <body class="boxed-page" >
-
     <!--sidebar start-->
     <aside>
         <div id="sidebar" tabindex="0" style="overflow: hidden; outline: none;">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-<!--                 <a href="javascript:;" class="active"></a> -->
             	<ul class="sidebar-menu" style="padding:25px">
                     <li><a href="adminpage.do">첫페이지</a></li>
-                    <li><a href="runninggoomng.do">런닝구 관리</a></li>
+                    <li><a href="adminRNG.do" id="adminRNG">런닝구 관리</a></li>
                     <li><a href="boastmng.do">자랑하기 관리</a></li>
                     <li><a href="membermng.do">회원 관리</a></li>
                     <li><a href="shoppingmng">쇼핑몰 관리</a></li>
@@ -40,13 +38,14 @@
     <!--main content start-->
     <section id="main-content" >
         <section class="wrapper">
-            <!-- 여기에 내용 추가 -->
+            <!-- 여기부터 내용부 -->
             <div class="row">
                 <div class="col-md-12" >
-                    <!-- 상단 정렬 메뉴 --> 
+                    <!-- 상단 메뉴 --> 
                     <section class="card">
                         <div class="card-body" >
                             <h1>런닝구 관리 페이지</h1>
+                            <!-- 런닝구 목록 정렬하기 -->
                             <div class="pro-sort">
                                 <label class="pro-lab">Sort By</label>
                                 <select class="styled" >
@@ -55,31 +54,31 @@
                                 </select>
                                 <a id="runninggooSort" href="runninggooSort.do">정렬보기</a>
                             </div>  
+                            <!-- 페이지 이동 버튼 -->
                             <div class="float-right">
-                             <!--    <nav aria-label="Page navigation example"> -->
-                                    <ul class="pagination pagination-sm mb-0">
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">»</a></li>
-                                    </ul>
-                               <!--  </nav> -->
+                                <ul class="pagination pagination-sm mb-0">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">»</a></li>
+                                </ul>
                             </div>
                         </div>
-                    </section> <!-- end 상단 정렬 메뉴 --> 
+                    </section> <!-- end 상단 메뉴 --> 
 
-                    <div class="row product-list" >
-                        <div class="col-md-12" >
+					<!-- 목록 start -->
+                    <div class="row product-list">
+                        <div class="col-md-12">
                             <section class="card">
-                                <div class="pro-img-box"></div>
                                 <div class="card-body text-center">
-                                    <!-- <div class="runninggooManageSort">
-                                       	 런닝구 리스트를 정렬 탭을 만들 예정
-                                    </div> -->
                                     <div class="runninggooManageList">
-                                        	런닝구 리스트를 띄울 예정
-                                     	    forEach로 db값 불러오기
-                                    <table border="1">
+                                        	런닝구 리스트를 띄울 예정 forEach로 db값 불러오기 
+                                        	테이블 헤더는 display:none 예정
+                                        	
+                                    <!-- ########## 런닝구 리스트  ########## -->
+									<table id="adminRNG" border="1"></table>
+                                        	
+                                   <%--  <table border="1">
 										<tr>
 											<th bgcolor="orange" width="100">프로필사진</th>
 											<th bgcolor="orange" width="200">호스트명</th>
@@ -90,7 +89,17 @@
 										<c:forEach items="${runningGooList}" var="runningGoo">
 											<tr>
 												<td>프로필사진(나중에 DB에서 가져올거) </td>
-												<%-- <td align="left"><a href="runningGoo.do?seq=${runningGoo.seq }"></a> --%>
+												<td align="left"><a href="runningGoo.do?seq=${runningGoo.seq }"></a>
+												<td>${runningGoo.memberID}</td>
+												<td>${runningGoo.hostComment }</td>
+												<td><fmt:formatDate value="${runningGoo.meetingTime }" pattern="yyyy-MM-dd"/></td>
+												<td><button name="deleteAdminRNG.do">삭제</button></td>
+											</tr>
+										</c:forEach>
+										<c:forEach items="${runningGooList}" var="runningGoo">
+											<tr>
+												<td>프로필사진(나중에 DB에서 가져올거) </td>
+												<td align="left"><a href="runningGoo.do?seq=${runningGoo.seq }"></a>
 												<td>${runningGoo.memberID}</td>
 												<td>${runningGoo.hostComment }</td>
 												<td><fmt:formatDate value="${runningGoo.meetingTime }" pattern="yyyy-MM-dd"/></td>
@@ -100,83 +109,16 @@
 										<c:forEach items="${runningGooList}" var="runningGoo">
 											<tr>
 												<td>프로필사진(나중에 DB에서 가져올거) </td>
-												<%-- <td align="left"><a href="runningGoo.do?seq=${runningGoo.seq }"></a> --%>
+												<td align="left"><a href="runningGoo.do?seq=${runningGoo.seq }"></a>
 												<td>${runningGoo.memberID}</td>
 												<td>${runningGoo.hostComment }</td>
 												<td><fmt:formatDate value="${runningGoo.meetingTime }" pattern="yyyy-MM-dd"/></td>
 												<td><button>삭제</button></td>
 											</tr>
 										</c:forEach>
-										<c:forEach items="${runningGooList}" var="runningGoo">
-											<tr>
-												<td>프로필사진(나중에 DB에서 가져올거) </td>
-												<%-- <td align="left"><a href="runningGoo.do?seq=${runningGoo.seq }"></a> --%>
-												<td>${runningGoo.memberID}</td>
-												<td>${runningGoo.hostComment }</td>
-												<td><fmt:formatDate value="${runningGoo.meetingTime }" pattern="yyyy-MM-dd"/></td>
-												<td><button>삭제</button></td>
-											</tr>
-										</c:forEach>
-									</table>
-                                    
+									</table> --%>
                                     </div>
                                     <p class="price">$300.00</p>
-                                    
-                                    <h4><a href="#" class="pro-title">Leopard Shirt Dress</a></h4>
-                                    <div class="runninggooManageSort">
-                                       	 런닝구 리스트를 정렬 탭을 만들 예정
-                                    </div>
-                                    <div class="runninggooManageList">
-                                        	런닝구 리스트를 띄울 예정
-                                     	    forEach로 db값 불러오기
-                                    <table>
-                                        <tr>
-                                            <td>프로필사진</td>
-                                            <td>호스트명</td>
-                                            <td>방설명</td>
-                                            <td>날짜</td>
-                                            <td>삭제</td>
-                                        </tr>
-                                    </table>
-                                    </div>
-                                    <p class="price">$300.00</p>
-                                    <h4><a href="#" class="pro-title">Leopard Shirt Dress</a></h4>
-                                    <div class="runninggooManageSort">
-                                       	 런닝구 리스트를 정렬 탭을 만들 예정
-                                    </div>
-                                    <div class="runninggooManageList">
-                                        	런닝구 리스트를 띄울 예정
-                                     	    forEach로 db값 불러오기
-                                    <table>
-                                        <tr>
-                                            <td>프로필사진</td>
-                                            <td>호스트명</td>
-                                            <td>방설명</td>
-                                            <td>날짜</td>
-                                            <td>삭제</td>
-                                        </tr>
-                                    </table>
-                                    </div>
-                                    <p class="price">$300.00</p>
-                                    <h4><a href="#" class="pro-title">Leopard Shirt Dress</a></h4>
-                                    <div class="runninggooManageSort">
-                                       	 런닝구 리스트를 정렬 탭을 만들 예정
-                                    </div>
-                                    <div class="runninggooManageList">
-                                        	런닝구 리스트를 띄울 예정
-                                     	    forEach로 db값 불러오기
-                                    <table>
-                                        <tr>
-                                            <td>프로필사진</td>
-                                            <td>호스트명</td>
-                                            <td>방설명</td>
-                                            <td>날짜</td>
-                                            <td>삭제</td>
-                                        </tr>
-                                    </table>
-                                    </div>
-                                    <p class="price">$300.00</p>
-                                    
                                 </div>
                             </section>
                         </div>  
