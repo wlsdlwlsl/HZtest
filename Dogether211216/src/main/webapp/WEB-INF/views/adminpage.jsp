@@ -27,7 +27,7 @@
         <div id="sidebar" tabindex="0" style="overflow: hidden; outline: none;">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-            	<ul class="sidebar-menu" style="padding:25px">
+            	<ul class="sidebar-menu" style="padding:25px;">
                     <li><a href="adminpage.do">첫페이지</a></li>
                     <li><a href="#adminRNG" id="adminRNG">런닝구 관리</a></li>
                     <li><a href="#adminBST" id="adminBST">자랑하기 관리</a></li>
@@ -35,7 +35,7 @@
                     <li><a href="shoppingmng">쇼핑몰 관리</a></li>
                     <li><a href="gymmanagermng.do">Gym매니저 관리</a></li>
                 </ul>
-            </ul><!-- sidebar menu end-->
+           </ul> <!-- sidebar menu end --> 
         </div>
     </aside><!--sidebar end-->
 
@@ -54,25 +54,27 @@
                             <h1 id="h1Member" style="display:none;">회원 관리 페이지</h1>
                             <h1 id="h1Shop" style="display:none;">쇼핑몰 관리 페이지</h1>
                             <h1 id="h1Gym" style="display:none;">Gym매니저 관리 페이지</h1>
-                            <!-- 런닝구 목록 정렬하기 -->
+                            <!-- 정렬하기 -->
                             <div class="pro-sort">
-                            	<div class="sortRNG" style="display:none;">
+                            	<!-- 런닝구 정렬 -->
+                            	<div class="sortRNG divHide" style="display:none;">
 	                                <label class="pro-lab">Sort By</label>
 	                                <select class="styled" >
 	                                    <option id="recentRoom" value="recentRoom">작성일 최신순</option>
 	                                    <option id="recentMeeting" value="recentMeeting">미팅 날짜순</option>
 	                                </select>
-	                                <a id="runninggooSort" href="runninggooSort.do">정렬보기</a>
+	                                <a id="RNGSort" href="RNGSort.do">정렬보기</a>
                                 </div>
-                                
-                                <div class="sortBST" style="display:none;">
+                                <!-- 자랑하기 정렬 -->
+                                <div class="sortBST divHide" style="display:none;">
 	                                <label class="pro-lab">Sort By</label>
 	                                <select class="styled" >
 	                                    <option id="recentBoard" value="recentBoard">작성일 최신순</option>
 	                                    <option id="topLike" value="topLike">좋아요순</option>
 	                                </select>
-	                                <a id="boastSort" href="boastSort.do">정렬보기</a>
+	                                <a id="BSTSort" href="BSTSort.do">정렬보기</a>
                                 </div>
+                                
                             </div>  
                             <!-- 페이지 이동 버튼 -->
                             <div class="float-right">
@@ -91,7 +93,7 @@
                         <div class="col-md-12">
                             <section class="card">
                                 <div class="card-body text-center">
-                                    <!-- 런닝구 리스트 -->
+                                    <!-- 런닝구  -->
                                     <div class="runninggooManageList">
                                        	이 글은 나중에 삭제될 예정입니다.<br><br>
                                        	런닝구 리스트를 띄울 예정 ajax로 db값 불러오기 
@@ -103,26 +105,26 @@
 										</table>		
                                     </div>
                                     
-                                    <!-- 자랑하기 리스트 -->
+                                    <!-- 자랑하기 -->
                                     <div class="boastManageList">
                                    		이 글은 나중에 삭제될 예정입니다.<br><br>
                                        	자랑하기 리스트를 띄울 예정 ajax로 db값 불러오기 
                                        	테이블 헤더는 display:none 예정
                                         	
-	                                    <!-- ########## 런닝구 리스트  ########## -->
+	                                    <!-- ########## 자랑하기 리스트  ########## -->
 										<table id="adminBSTList" border="2" style="display:none;">
 										<!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
 										</table>		
                                     </div>
                                     
-                                    <!-- 회원 리스트 -->
-                                    <div class="runninggooManageList">
+                                    <!-- 회원  -->
+                                    <div class="memberManageList">
                                        	이 글은 나중에 삭제될 예정입니다.<br><br>
                                        	런닝구 리스트를 띄울 예정 ajax로 db값 불러오기 
                                        	테이블 헤더는 display:none 예정
                                         	
-	                                    <!-- ########## 런닝구 리스트  ########## -->
-										<table id="adminRNGList" border="2" style="display:none";>
+	                                    <!-- ########## 회원 리스트  ########## -->
+										<table id="adminMemberList" border="2" style="display:none";>
 	                                    <!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
 										</table>		
                                     </div>

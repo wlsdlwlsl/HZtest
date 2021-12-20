@@ -11,6 +11,7 @@ import com.dogether.domain.BoardVO;
 import com.dogether.domain.MemberVO;
 import com.dogether.domain.RunningGooVO;
 import com.dogether.service.BoardService;
+import com.dogether.service.MemberService;
 import com.dogether.service.RunningGooService;
 
 @Controller
@@ -20,6 +21,8 @@ public class AdminMyPageController {
 	RunningGooService runningGooService;
 	@Autowired
 	BoardService boardService;
+	@Autowired
+	MemberService memberService;
 	
 
 	// 첫페이지로 이동
@@ -47,12 +50,12 @@ public class AdminMyPageController {
 	}
 	
 	// 회원 list 출력
-//	@RequestMapping("adminBST.do")
-//	@ResponseBody
-//	public List<MemberVO> adminMember() {		
-//		List<MemberVO> boList = boardService.getBoardList();
-//		System.out.println("회원 리스트 전달완료!!");
-//		return boList;
-//	}
+	@RequestMapping("adminMember.do")
+	@ResponseBody
+	public List<MemberVO> adminMember() {		
+		List<MemberVO> memList = memberService.getMemberList();
+		System.out.println("회원 리스트 전달완료!!");
+		return memList;
+	}
 	
 }
