@@ -17,8 +17,7 @@
     <link href="./resources/css/admin/bootstrap.min.css" rel="stylesheet">
     <link href="./resources/css/admin/style.css" rel="stylesheet">
     
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-	type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
 	<script src="./resources/js/admin/common-scripts.js"></script>
 	<script src="./resources/js/admin/adminpage.js"></script>
 </head>
@@ -30,7 +29,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
             	<ul class="sidebar-menu" style="padding:25px">
                     <li><a href="adminpage.do">첫페이지</a></li>
-                    <li><div id="adminRNG">런닝구 관리2</div></li>
+                    <li><a id="adminRNG">런닝구 관리2</a></li>
                     <li><a href="boastmng.do">자랑하기 관리</a></li>
                     <li><a href="membermng.do">회원 관리</a></li>
                     <li><a href="shoppingmng">쇼핑몰 관리</a></li>
@@ -77,53 +76,37 @@
                             <section class="card">
                                 <div class="card-body text-center">
                                     <div class="runninggooManageList">
-                                        	런닝구 리스트를 띄울 예정 forEach로 db값 불러오기 
+                                        	런닝구 리스트를 띄울 예정 ajax로 db값 불러오기 
                                         	테이블 헤더는 display:none 예정
                                         	
                                     <!-- ########## 런닝구 리스트  ########## -->
-									<table id="adminRNGList" border="1"></table>
-                                        	
-                                   <%--  <table border="1">
-										<tr>
+									<table id="adminRNGList" border="2">
+                                        <tr> <!-- 나중에 지울 예정 -->
 											<th bgcolor="orange" width="100">프로필사진</th>
 											<th bgcolor="orange" width="200">호스트명</th>
 											<th bgcolor="orange" width="150">방설명</th>
 											<th bgcolor="orange" width="150">미팅날짜</th>
 											<th bgcolor="orange" width="100">삭제</th>
 										</tr>
-										<c:forEach items="${runningGooList}" var="runningGoo">
-											<tr>
-												<td>프로필사진(나중에 DB에서 가져올거) </td>
-												<td align="left"><a href="runningGoo.do?seq=${runningGoo.seq }"></a>
-												<td>${runningGoo.memberID}</td>
-												<td>${runningGoo.hostComment }</td>
-												<td><fmt:formatDate value="${runningGoo.meetingTime }" pattern="yyyy-MM-dd"/></td>
-												<td><button name="deleteAdminRNG.do">삭제</button></td>
-											</tr>
-										</c:forEach>
-										<c:forEach items="${runningGooList}" var="runningGoo">
-											<tr>
-												<td>프로필사진(나중에 DB에서 가져올거) </td>
-												<td align="left"><a href="runningGoo.do?seq=${runningGoo.seq }"></a>
-												<td>${runningGoo.memberID}</td>
-												<td>${runningGoo.hostComment }</td>
-												<td><fmt:formatDate value="${runningGoo.meetingTime }" pattern="yyyy-MM-dd"/></td>
-												<td><button>삭제</button></td>
-											</tr>
-										</c:forEach>
-										<c:forEach items="${runningGooList}" var="runningGoo">
-											<tr>
-												<td>프로필사진(나중에 DB에서 가져올거) </td>
-												<td align="left"><a href="runningGoo.do?seq=${runningGoo.seq }"></a>
-												<td>${runningGoo.memberID}</td>
-												<td>${runningGoo.hostComment }</td>
-												<td><fmt:formatDate value="${runningGoo.meetingTime }" pattern="yyyy-MM-dd"/></td>
-												<td><button>삭제</button></td>
-											</tr>
-										</c:forEach>
-									</table> --%>
+									</table>		
                                     </div>
-                                    <p class="price">$300.00</p>
+                                    
+                                    
+                                    <div class="boastManageList">
+                                        	자랑하기 리스트를 띄울 예정 ajax로 db값 불러오기 
+                                        	테이블 헤더는 display:none 예정
+                                        	
+                                    <!-- ########## 런닝구 리스트  ########## -->
+									<table id="adminRNGList" border="2">
+                                        <tr> <!-- 나중에 지울 예정 -->
+											<th bgcolor="orange" width="100">프로필사진</th>
+											<th bgcolor="orange" width="200">호스트명</th>
+											<th bgcolor="orange" width="150">방설명</th>
+											<th bgcolor="orange" width="150">미팅날짜</th>
+											<th bgcolor="orange" width="100">삭제</th>
+										</tr>
+									</table>		
+                                    </div>
                                 </div>
                             </section>
                         </div>  

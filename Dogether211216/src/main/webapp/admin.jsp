@@ -15,9 +15,8 @@
     <!-- admin 적용 -->
     <link href="./resources/css/admin/bootstrap.min.css" rel="stylesheet">
     <link href="./resources/css/admin/style.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
 	<script src="./resources/js/admin/common-scripts.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.js"
-	type="text/javascript"></script>
 	<script src="./resources/js/admin/adminpage.js"></script>
 </head>
 <body class="boxed-page" >
@@ -28,7 +27,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
             	<ul class="sidebar-menu" style="padding:25px">
                     <li><a href="adminpage.do">첫페이지</a></li>
-                    <li><a href="adminRNG.do" id="adminRNG">런닝구 관리</a></li>
+                    <li><a id="adminRNG">런닝구 관리2</a></li>
                     <li><a href="boastmng.do">자랑하기 관리</a></li>
                     <li><a href="membermng.do">회원 관리</a></li>
                     <li><a href="shoppingmng">쇼핑몰 관리</a></li>

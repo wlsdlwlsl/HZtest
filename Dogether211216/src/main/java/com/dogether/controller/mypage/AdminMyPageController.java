@@ -36,14 +36,6 @@ public class AdminMyPageController {
 		System.out.println("2런닝구 관리 페이지로 이동!!");
 		List<RunningGooVO> voList = runningGooService.getRNRoomList(vo);
 		System.out.println("런닝구 리스트 전달완료!!");
-//		System.out.println(voList);
-//		m.addAttribute("resultRNG", voList);
-//		return "adminpage";
-		
-		//json을 string으로 바꾸는 함수로 voList를 string으로 보낸뒤
-		//js에서 string을 json으로 바꾸
-		//
-		//JSON.stringify(voList);
 		return voList;
 	}
 	
