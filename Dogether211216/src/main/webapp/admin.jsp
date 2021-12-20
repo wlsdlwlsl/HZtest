@@ -16,6 +16,9 @@
     <link href="./resources/css/admin/bootstrap.min.css" rel="stylesheet">
     <link href="./resources/css/admin/style.css" rel="stylesheet">
 	<script src="./resources/js/admin/common-scripts.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+	type="text/javascript"></script>
+	<script src="./resources/js/admin/adminpage.js"></script>
 </head>
 <body class="boxed-page" >
     <!--sidebar start-->
@@ -76,7 +79,7 @@
                                         	테이블 헤더는 display:none 예정
                                         	
                                     <!-- ########## 런닝구 리스트  ########## -->
-									<table id="adminRNG" border="1"></table>
+									<table id="adminRNGList" border="1"></table>
                                         	
                                    <%--  <table border="1">
 										<tr>

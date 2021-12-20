@@ -16,6 +16,8 @@
     <link href="./resources/css/admin/bootstrap.min.css" rel="stylesheet">
     <link href="./resources/css/admin/style.css" rel="stylesheet">
 	<script src="./resources/js/admin/common-scripts.js"></script>
+	<script src="./resources/js/admin/adminpage.js"></script>
+	
 </head>
 <body class="boxed-page" >
 
