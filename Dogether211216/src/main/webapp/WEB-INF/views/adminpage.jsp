@@ -31,7 +31,7 @@
                     <li><a href="#adminBST" id="adminBST">자랑하기 관리</a></li>
                     <li><a href="#adminMember" id="adminMember">회원 관리</a></li>
                     <li><a href="#adminOrder" id="adminOrder">쇼핑몰 주문 관리</a></li>
-                    <li><a href="gymmanagermng.do">Gym매니저 관리</a></li>
+                    <li><a href="gymmanagermng.do">Gym매니저 관리(쇼핑몰 상품 입력으로 바뀔수도?)</a></li>
                 </ul>
            </ul> <!-- sidebar menu end --> 
         </div>
@@ -57,42 +57,42 @@
                             	<!-- 런닝구 정렬 -->
                             	<div class="sortRNG divHide" style="display:none;">
 	                                <label class="pro-lab">Sort By</label>
-	                                <select class="styled" >
-	                                    <option id="recentRoom" value="recentRoom">작성일 최신순</option>
-	                                    <option id="recentMeeting" value="recentMeeting">미팅 날짜순</option>
+	                                <select class="sortTypeRNG" name="sortTypeRNG">
+	                                    <option id="recentRoom" value="0">작성일 최신순</option>
+	                                    <option id="recentMeeting" value="1">미팅 날짜순</option>
 	                                </select>
-	                                <a id="RNGSort" href="RNGSort.do">정렬보기</a>
+	                                <a id="rngSort" href="#rngSort">정렬하기</a>
                                 </div>
                                 <!-- 자랑하기 정렬 -->
                                 <div class="sortBST divHide" style="display:none;">
 	                                <label class="pro-lab">Sort By</label>
-	                                <select class="styled" >
-	                                    <option id="recentBoard" value="recentBoard">작성일 최신순</option>
-	                                    <option id="topLike" value="topLike">좋아요순</option>
+	                                <select class="sortTypeBST" name="sortTypeBST">
+	                                    <option id="recentBoard" value="0">작성일 최신순</option>
+	                                    <option id="topLike" value="1">좋아요순</option>
 	                                </select>
-	                                <a id="BSTSort" href="BSTSort.do">정렬보기</a>
+	                                <a id="bstSort" href="#bstSort">정렬하기</a>
                                 </div>
                                 <!-- 회원 정렬 -->
                                 <div class="sortMember divHide" style="display:none;">
 	                                <label class="pro-lab">Sort By</label>
-	                                <select class="styled" >
-	                                    <option id="nameAcs" value="nameAcs">이름순</option>
-	                                    <option id="ageAcs" value="ageAcs">나이순</option>
-	                                    <option id="blackList" value="blackList">블랙리스트만 조회</option>
+	                                <select class="sortTypeMember" name="sortTypeMember">
+	                                    <option id="nameAcs" value="0">이름순</option>
+	                                    <option id="ageAcs" value="1">나이순</option>
+	                                    <option id="blackList" value="2">블랙리스트만</option>
 	                                </select>
-	                                <a id="memberSort" href="memberSort.do">정렬보기</a>
+	                                <a id="memberSort" href="#memberSort">정렬하기</a>
                                 </div>
                                 <!-- 주문 정렬 -->
                                 <div class="sortOrder divHide" style="display:none;">
 	                                <label class="pro-lab">Sort By</label>
 	                                <select class="styled" >
 	                                    <option id="dateOfOrder" value="dateOfOrder">주문일자순</option>
-	                                    <option id="confirmY" value="confirmY">주문확정만 조회</option>
-	                                    <option id="return1" value="return1">반품신청만 조회</option>
-	                                    <option id="return2" value="return2">반품처리중만 조회</option>
-	                                    <option id="return3" value="return3">반품완료만 조회</option>
+	                                    <option id="confirmY" value="confirmY">주문확정만</option>
+	                                    <option id="return1" value="return1">반품신청만</option>
+	                                    <option id="return2" value="return2">반품처리중만</option>
+	                                    <option id="return3" value="return3">반품완료만</option>
 	                                </select>
-	                                <a id="orderSort" href="orderSort.do">정렬보기</a>
+	                                <a id="orderSort" href="#orderSort">정렬하기</a>
                                 </div>
                                 
                             </div>  

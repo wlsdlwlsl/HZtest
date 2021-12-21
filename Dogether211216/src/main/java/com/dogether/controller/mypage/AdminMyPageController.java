@@ -34,10 +34,11 @@ public class AdminMyPageController {
 		System.out.println("관리자 페이지로 이동!!");
 	}
 	
-	// 런닝구 list 출력
+	// 런닝구 list 출력 + 정렬하기
 	@RequestMapping("adminRNG.do")
 	@ResponseBody
 	public List<RunningGooVO> adminRNG(RunningGooVO vo) {		
+		System.out.println(vo.getSortTypeRNG());
 		List<RunningGooVO> voList = runningGooService.getRNRoomList(vo);
 		System.out.println("런닝구 리스트 전달완료!!");
 		return voList;
@@ -46,8 +47,9 @@ public class AdminMyPageController {
 	// 자랑하기 list 출력
 	@RequestMapping("adminBST.do")
 	@ResponseBody
-	public List<BoardVO> adminBST() {		
-		List<BoardVO> boList = boardService.getBoardList();
+	public List<BoardVO> adminBST(BoardVO vo) {	
+		System.out.println(vo.getSortTypeBST());
+		List<BoardVO> boList = boardService.getBoardList(vo);
 		System.out.println("자랑하기 리스트 전달완료!!");
 		return boList;
 	}
@@ -55,8 +57,9 @@ public class AdminMyPageController {
 	// 회원 list 출력
 	@RequestMapping("adminMember.do")
 	@ResponseBody
-	public List<MemberVO> adminMember() {		
-		List<MemberVO> memList = memberService.getMemberList();
+	public List<MemberVO> adminMember(MemberVO vo) {
+		System.out.println(vo.getSortTypeMember());
+		List<MemberVO> memList = memberService.getMemberList(vo);
 		System.out.println("회원 리스트 전달완료!!");
 		return memList;
 	}
@@ -65,10 +68,16 @@ public class AdminMyPageController {
 	@RequestMapping("adminOrder.do")
 	@ResponseBody
 	public List<OrderVO> adminOrder() {		
-		System.out.println("쇼핑몰 주문 관리 요청을 받음!!");
 		List<OrderVO> odList = orderService.getOrderList();
 		System.out.println("쇼핑몰 주문 리스트 전달완료!!");
 		return odList;
 	}
+//	@RequestMapping("adminRNG.do")
+//	@ResponseBody
+//	public List<RunningGooVO> adminRNG(RunningGooVO vo) {		
+//		List<RunningGooVO> voList = runningGooService.getRNRoomList(vo);
+//		System.out.println("런닝구 리스트 전달완료!!");
+//		return voList;
+//	}
 	
 }

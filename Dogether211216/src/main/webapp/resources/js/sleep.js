@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     /* ############ 일어날 시간을 입력했을 때  ############*/
     $('#calculate').click(function() {
-    	if($('#hour').val() != '(hour)' && $('#minute').val() != '(minute)') {
+    	if($('#hour').val() != 'hour' && $('#minute').val() != 'minute') {
             $('.pricing-tables').hide();
             var setTime = new Date();
 
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
     /* ########## 자러갈 시간을 입력했을 때 ########## */
     $('#calc').click(function() {
-        if($('#hour2').val() != '(hour)' && $('#minute2').val() != '(minute)') {
+        if($('#hour2').val() != 'hour' && $('#minute2').val() != 'minute') {
             $('.pricing-tables').hide();
             var setTime = new Date();
 

@@ -16,8 +16,8 @@ public class BoardDAOImpl implements BoardDAO{
 	private SqlSessionTemplate mybatis;
 	
 	@Override
-	public List<BoardVO> getBoardList() {
-		return mybatis.selectList("BoardDAO.getBoardList");
+	public List<BoardVO> getBoardList(BoardVO vo) {
+		return mybatis.selectList("BoardDAO.getBoardList", vo);
 	}
 
 	@Override

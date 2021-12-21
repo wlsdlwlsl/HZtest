@@ -6,7 +6,8 @@ $(document).ready(function() {
 			type : 'get',
 			url : 'adminRNG.do',
 		    dataType : 'json',											// db(서버)에서 받을 때 데이터 타입
-			success : function(resultRNG){
+			data: { sortTypeRNG : $(".sortTypeRNG").val() },
+		    success : function(resultRNG){
 				// ##### 동적으로 런닝구방 리스트 만들기 #####
 				var adminRNGList = $("#adminRNGList");					// adminpage.jsp에 table id를 변수에 저장
 				adminRNGList.empty();									// 비워놓고 시작 ==> 다른 리스트가 있을 수 있으니까
@@ -69,6 +70,7 @@ $(document).ready(function() {
 			type : 'get',
 			url : 'adminBST.do',
 		    dataType : 'json',											// db(서버)에서 받을 때 데이터 타입
+			data: { sortTypeBST : $(".sortTypeBST").val() },
 			success : function(resultBST){
 				// ##### 동적으로 자랑하기 리스트 만들기 #####
 				var adminBSTList = $("#adminBSTList");					// adminpage.jsp에 table id를 변수에 저장
@@ -132,6 +134,7 @@ $(document).ready(function() {
 			type : 'get',
 			url : 'adminMember.do',
 		    dataType : 'json',											// db(서버)에서 받을 때 데이터 타입
+			data: { sortTypeMember : $(".sortTypeMember").val() },
 			success : function(resultMember){
 				// ##### 동적으로 회원 리스트 만들기 #####
 				var adminMemberList = $("#adminMemberList");			// adminpage.jsp에 table id를 변수에 저장
@@ -236,8 +239,8 @@ $(document).ready(function() {
 					tr.append(memberID);
 					var productID = $("<td width='400' />").html(row.productID);
 					tr.append(productID);
-					var buyingConfrimYN = $("<td width='100' />").html(row.buyingConfrimYN);			
-					tr.append(buyingConfrimYN); 													
+					var buyingConfirmYN = $("<td width='100' />").html(row.buyingConfirmYN);			
+					tr.append(buyingConfirmYN); 													
 					var returnYN = $("<td width='100' />").text(row.returnYN);	
 					tr.append(returnYN);
 					var returnStatus = $("<td width='100' />").html(row.returnStatus);
@@ -257,7 +260,7 @@ $(document).ready(function() {
 	 $('#adminOrder').click(function(evt){
 		 evt.preventDefault();				//a태그 기능 무력화
 		 evt.stopPropagation();				//a태그 기능 무력화
-		 alert("쇼핑몰 주문 관리 클릭");
+		 //alert("쇼핑몰 주문 관리 클릭");
 		 $("h1").hide();					// 페이지명 안보이게 변경
 		 $("#h1Order").show();				// 페이지명 보이게 변경
 		 
@@ -269,4 +272,58 @@ $(document).ready(function() {
 		 adminOrderList();					// 리스트 출력 함수 호출
 	 }); //end click 
  
+	// ################################################
+	// 정렬하기 
+/*	function rngSortRoom(){
+		$.ajax({
+			type : 'get',
+			url : 'adminRNG.do',
+		    dataType : 'json',											// db(서버)에서 받을 때 데이터 타입
+			success : function(sortRNG){
+				
+			},	// end success
+			error : function(err){
+				alert('전송실패');
+				console.log(err);
+			} //end error		
+		}) // end ajax
+	} // end function rngSortRoom()
+	
+	function rngSortMeeting(){
+		$.ajax({
+			type : 'get',
+			url : 'adminRNG.do',
+		    dataType : 'json',											// db(서버)에서 받을 때 데이터 타입
+			success : function(sortRNG){
+				
+			},	// end success
+			error : function(err){
+				alert('전송실패');
+				console.log(err);
+			} //end error		
+		}) // end ajax
+	} // end function rngSortRoom()
+*/
+	 // ############ 런닝구 정렬하기를 클릭했을 때  ############
+	 $('#rngSort').click(function(evt){
+		 evt.preventDefault();				// a태그 링크 기능 무력화
+		 evt.stopPropagation();				// a태그 링크 기능 무력화
+		 adminRNGList();
+	 }); //end click 
+	 
+	 // ############ 자랑하기 정렬하기를 클릭했을 때  ############
+	 $('#bstSort').click(function(evt){
+		 evt.preventDefault();				// a태그 링크 기능 무력화
+		 evt.stopPropagation();				// a태그 링크 기능 무력화
+		 adminBSTList();
+	 }); //end click 
+	 
+	// ############ 회원 정렬하기를 클릭했을 때  ############
+	 $('#memberSort').click(function(evt){
+		 evt.preventDefault();				// a태그 링크 기능 무력화
+		 evt.stopPropagation();				// a태그 링크 기능 무력화
+		 adminMemberList();
+	 }); //end click 
+	 
+	 
 });	// end ready

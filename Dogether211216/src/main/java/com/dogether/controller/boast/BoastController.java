@@ -1,7 +1,5 @@
 package com.dogether.controller.boast;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dogether.domain.BoardVO;
-import com.dogether.domain.Board_ReplyVO;
 import com.dogether.service.BoardServiceImpl;
 
 
@@ -21,9 +18,9 @@ public class BoastController {
 	private BoardServiceImpl boardService;
 	
 	@RequestMapping("boast.do")
-	public void getboardList(Model m) {
+	public void getboardList(Model m, BoardVO vo) {
 		
-		List<BoardVO> list = boardService.getBoardList();
+		List<BoardVO> list = boardService.getBoardList(vo);
 		/*for(int i = 0;i < list.size(); i++) {
 			Board_ReplyVO result = new Board_ReplyVO();
 			result.setBoardID(list.get(i).getBoardID());

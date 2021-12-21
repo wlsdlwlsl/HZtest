@@ -18,6 +18,7 @@ public class RunningGooVO {
 	private String hostComment;
 	private String meetingTime;
 	private int deposit;
+	private int sortTypeRNG;	// 0이면 default / 1이면 미팅날짜순 
 	
 	
 	public int getRoomNumber() {
@@ -116,8 +117,11 @@ public class RunningGooVO {
 	public void setDeposit(int deposit) {
 		this.deposit = deposit;
 	}
-	
-	
-	
+	public int getSortTypeRNG() {
+		return sortTypeRNG;
+	}
+	public void setSortTypeRNG(int sortTypeRNG) {
+		this.sortTypeRNG = sortTypeRNG;
+	}
 
 }

@@ -17,6 +17,7 @@ public class MemberVO {
 	private int member_fsize;
 	private int point;
 	private char blackListYN;
+	private int sortTypeMember;		// 0이면 이름순, 1이면 나이순, 2면 블랙리스트만
 	
 	public String getMemberID() {
 		return memberID;
@@ -114,6 +115,11 @@ public class MemberVO {
 	public void setBlackListYN(char blackListYN) {
 		this.blackListYN = blackListYN;
 	}
-	
+	public int getSortTypeMember() {
+		return sortTypeMember;
+	}
+	public void setSortTypeMember(int sortTypeMember) {
+		this.sortTypeMember = sortTypeMember;
+	}
 	
 }
