@@ -72,12 +72,5 @@ public class AdminMyPageController {
 		System.out.println("쇼핑몰 주문 리스트 전달완료!!");
 		return odList;
 	}
-//	@RequestMapping("adminRNG.do")
-//	@ResponseBody
-//	public List<RunningGooVO> adminRNG(RunningGooVO vo) {		
-//		List<RunningGooVO> voList = runningGooService.getRNRoomList(vo);
-//		System.out.println("런닝구 리스트 전달완료!!");
-//		return voList;
-//	}
 	
 }
