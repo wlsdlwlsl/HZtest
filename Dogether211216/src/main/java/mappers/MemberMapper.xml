@@ -4,8 +4,8 @@
 <mapper namespace="MemberDAO">
 	
 	<select id="getMemberList" resultType="MemberVO" parameterType="MemberVO">
-			SELECT *
-			FROM Member
+		SELECT *
+		FROM Member
 	</select> 
 	
 </mapper>

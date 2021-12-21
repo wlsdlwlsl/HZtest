@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dogether.domain.BoardVO;
 import com.dogether.domain.MemberVO;
+import com.dogether.domain.OrderVO;
 import com.dogether.domain.RunningGooVO;
 import com.dogether.service.BoardService;
 import com.dogether.service.MemberService;
+import com.dogether.service.OrderService;
 import com.dogether.service.RunningGooService;
 
 @Controller
@@ -23,7 +25,8 @@ public class AdminMyPageController {
 	BoardService boardService;
 	@Autowired
 	MemberService memberService;
-	
+	@Autowired
+	OrderService orderService;
 
 	// 첫페이지로 이동
 	@RequestMapping("adminpage.do")
@@ -56,6 +59,16 @@ public class AdminMyPageController {
 		List<MemberVO> memList = memberService.getMemberList();
 		System.out.println("회원 리스트 전달완료!!");
 		return memList;
+	}
+	
+	// 쇼핑몰 주문 list 출력
+	@RequestMapping("adminOrder.do")
+	@ResponseBody
+	public List<OrderVO> adminOrder() {		
+		System.out.println("쇼핑몰 주문 관리 요청을 받음!!");
+		List<OrderVO> odList = orderService.getOrderList();
+		System.out.println("쇼핑몰 주문 리스트 전달완료!!");
+		return odList;
 	}
 	
 }

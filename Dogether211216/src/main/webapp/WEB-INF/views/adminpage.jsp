@@ -13,10 +13,8 @@
     <!-- 반응형 웹페이지  -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- admin 적용 -->
-    
     <link href="./resources/css/admin/bootstrap.min.css" rel="stylesheet">
     <link href="./resources/css/admin/style.css" rel="stylesheet">
-    
     <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
 	<script src="./resources/js/admin/common-scripts.js"></script>
 	<script src="./resources/js/admin/adminpage.js"></script>
@@ -32,7 +30,7 @@
                     <li><a href="#adminRNG" id="adminRNG">런닝구 관리</a></li>
                     <li><a href="#adminBST" id="adminBST">자랑하기 관리</a></li>
                     <li><a href="#adminMember" id="adminMember">회원 관리</a></li>
-                    <li><a href="shoppingmng">쇼핑몰 관리</a></li>
+                    <li><a href="#adminOrder" id="adminOrder">쇼핑몰 주문 관리</a></li>
                     <li><a href="gymmanagermng.do">Gym매니저 관리</a></li>
                 </ul>
            </ul> <!-- sidebar menu end --> 
@@ -52,7 +50,7 @@
                             <h1 id="h1RNG" style="display:none;">런닝구 관리 페이지</h1>
                             <h1 id="h1BST" style="display:none;">자랑하기 관리 페이지</h1>
                             <h1 id="h1Member" style="display:none;">회원 관리 페이지</h1>
-                            <h1 id="h1Shop" style="display:none;">쇼핑몰 관리 페이지</h1>
+                            <h1 id="h1Order" style="display:none;">쇼핑몰 주문 관리 페이지</h1>
                             <h1 id="h1Gym" style="display:none;">Gym매니저 관리 페이지</h1>
                             <!-- 정렬하기 -->
                             <div class="pro-sort">
@@ -73,6 +71,28 @@
 	                                    <option id="topLike" value="topLike">좋아요순</option>
 	                                </select>
 	                                <a id="BSTSort" href="BSTSort.do">정렬보기</a>
+                                </div>
+                                <!-- 회원 정렬 -->
+                                <div class="sortMember divHide" style="display:none;">
+	                                <label class="pro-lab">Sort By</label>
+	                                <select class="styled" >
+	                                    <option id="nameAcs" value="nameAcs">이름순</option>
+	                                    <option id="ageAcs" value="ageAcs">나이순</option>
+	                                    <option id="blackList" value="blackList">블랙리스트만 조회</option>
+	                                </select>
+	                                <a id="memberSort" href="memberSort.do">정렬보기</a>
+                                </div>
+                                <!-- 주문 정렬 -->
+                                <div class="sortOrder divHide" style="display:none;">
+	                                <label class="pro-lab">Sort By</label>
+	                                <select class="styled" >
+	                                    <option id="dateOfOrder" value="dateOfOrder">주문일자순</option>
+	                                    <option id="confirmY" value="confirmY">주문확정만 조회</option>
+	                                    <option id="return1" value="return1">반품신청만 조회</option>
+	                                    <option id="return2" value="return2">반품처리중만 조회</option>
+	                                    <option id="return3" value="return3">반품완료만 조회</option>
+	                                </select>
+	                                <a id="orderSort" href="orderSort.do">정렬보기</a>
                                 </div>
                                 
                             </div>  
@@ -96,35 +116,32 @@
                                     <!-- 런닝구  -->
                                     <div class="runninggooManageList">
                                        	이 글은 나중에 삭제될 예정입니다.<br><br>
-                                       	런닝구 리스트를 띄울 예정 ajax로 db값 불러오기 
-                                       	테이블 헤더는 display:none 예정
-                                        	
 	                                    <!-- ########## 런닝구 리스트  ########## -->
 										<table id="adminRNGList" border="2" style="display:none";>
 	                                    <!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
 										</table>		
                                     </div>
-                                    
                                     <!-- 자랑하기 -->
                                     <div class="boastManageList">
                                    		이 글은 나중에 삭제될 예정입니다.<br><br>
-                                       	자랑하기 리스트를 띄울 예정 ajax로 db값 불러오기 
-                                       	테이블 헤더는 display:none 예정
-                                        	
 	                                    <!-- ########## 자랑하기 리스트  ########## -->
 										<table id="adminBSTList" border="2" style="display:none;">
 										<!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
 										</table>		
                                     </div>
-                                    
                                     <!-- 회원  -->
                                     <div class="memberManageList">
                                        	이 글은 나중에 삭제될 예정입니다.<br><br>
-                                       	런닝구 리스트를 띄울 예정 ajax로 db값 불러오기 
-                                       	테이블 헤더는 display:none 예정
-                                        	
 	                                    <!-- ########## 회원 리스트  ########## -->
 										<table id="adminMemberList" border="2" style="display:none";>
+	                                    <!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
+										</table>		
+                                    </div>
+                                    <!-- 쇼핑몰  -->
+                                    <div class="orderManageList">
+                                       	이 글은 나중에 삭제될 예정입니다.<br><br>
+	                                    <!-- ########## 회원 리스트  ########## -->
+										<table id="adminOrderList" border="2" style="display:none";>
 	                                    <!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
 										</table>		
                                     </div>

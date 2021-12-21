@@ -5,7 +5,7 @@ public class OrderVO {
 	private String memberID;
 	private String productID;
 	private String orderDate;
-	private char buyingConfirmYN;
+	private char buyingConfrimYN;
 	private char returnYN;
 	private int returnStatus;
 	
@@ -33,11 +33,11 @@ public class OrderVO {
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-	public char getBuyingConfirmYN() {
-		return buyingConfirmYN;
+	public char getBuyingConfrimYN() {
+		return buyingConfrimYN;
 	}
-	public void setBuyingConfirmYN(char buyingConfirmYN) {
-		this.buyingConfirmYN = buyingConfirmYN;
+	public void setBuyingConfrimYN(char buyingConfrimYN) {
+		this.buyingConfrimYN = buyingConfrimYN;
 	}
 	public char getReturnYN() {
 		return returnYN;
