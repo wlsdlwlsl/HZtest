@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%-- <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +16,10 @@
     <link href="./resources/css/admin/bootstrap.min.css" rel="stylesheet">
     <link href="./resources/css/admin/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<script src="./resources/js/admin/common-scripts.js"></script>
 	<script src="./resources/js/admin/adminpage.js"></script>
+	
 </head>
 <body class="boxed-page" >
     <!--sidebar start-->
@@ -31,6 +33,7 @@
                     <li><a href="#adminBST" id="adminBST">자랑하기 관리</a></li>
                     <li><a href="#adminMember" id="adminMember">회원 관리</a></li>
                     <li><a href="#adminOrder" id="adminOrder">쇼핑몰 주문 관리</a></li>
+                    <li><a href="gymmanagermng.do">쇼핑몰 상품 추가 페이지</a></li>
                     <li><a href="gymmanagermng.do">Gym매니저 관리(쇼핑몰 상품 입력으로 바뀔수도?)</a></li>
                 </ul>
            </ul> <!-- sidebar menu end --> 
@@ -51,7 +54,8 @@
                             <h1 id="h1BST" style="display:none;">자랑하기 관리 페이지</h1>
                             <h1 id="h1Member" style="display:none;">회원 관리 페이지</h1>
                             <h1 id="h1Order" style="display:none;">쇼핑몰 주문 관리 페이지</h1>
-                            <h1 id="h1Gym" style="display:none;">Gym매니저 관리 페이지</h1>
+<!--                             <h1 id="h1Gym" style="display:none;">쇼핑몰 상품 추가 페이지</h1>
+ -->                            <h1 id="h1Gym" style="display:none;">Gym매니저 관리 페이지</h1>
                             <!-- 정렬하기 -->
                             <div class="pro-sort">
                             	<!-- 런닝구 정렬 -->
@@ -77,7 +81,7 @@
 	                                <label class="pro-lab">Sort By</label>
 	                                <select class="sortTypeMember" name="sortTypeMember">
 	                                    <option id="nameAcs" value="0">이름순</option>
-	                                    <option id="ageAcs" value="1">나이순</option>
+	                                    <option id="ageAcs" value="1">생년월일순</option>
 	                                    <option id="blackList" value="2">블랙리스트만</option>
 	                                </select>
 	                                <a id="memberSort" href="#memberSort">정렬하기</a>
@@ -112,18 +116,32 @@
                     <div class="row product-list">
                         <div class="col-md-12">
                             <section class="card">
-                                <div class="card-body text-center">
+                                <div class="card-body text-center" style="margin:auto;">
+	                                <!-- 여기부터 복사하기 -->
+	                                <!-- 첫페이지 그래프 띄우기 -->
+	                                <table border="1" style="margin:auto; width: 100%; height:100%;">
+	                                    <tr>
+	                                        <th>회원수<br>그제 / 어제 / 오늘<br>가입자 & 탈퇴자 <br>bar차트</th>
+	                                        <th>런닝구 매칭수<br>그제 / 어제 / 오늘<br>방개설일자별로 count(*)<br>bar차트</th>
+	                                        <th>자랑하기 글수<br>개설일부터~현재까지 변동 추이(일자별)<br>line차트</th>
+	                                    </tr>
+	                                    <tr>
+	                                        <td>전체가입자수 대비 당월가입자수(그 외는 기존가입자)<br>pie차트</td>
+	                                        <td>전체글수 대비 매칭완료수(memberPendingN)<br>pie차트</td>
+	                                        <td>방문자수<br>today / total<br>line차트</td>
+	                                    </tr>
+	                                </table>
                                     <!-- 런닝구  -->
                                     <div class="runninggooManageList">
-                                       	이 글은 나중에 삭제될 예정입니다.<br><br>
+                                       	<!-- 이 글은 나중에 삭제될 예정입니다.<br><br> -->
 	                                    <!-- ########## 런닝구 리스트  ########## -->
-										<table id="adminRNGList" border="2" style="display:none";>
+										<table id="adminRNGList" border="2" style="display:none;">
 	                                    <!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
 										</table>		
                                     </div>
                                     <!-- 자랑하기 -->
                                     <div class="boastManageList">
-                                   		이 글은 나중에 삭제될 예정입니다.<br><br>
+                                   		<!-- 이 글은 나중에 삭제될 예정입니다.<br><br> -->
 	                                    <!-- ########## 자랑하기 리스트  ########## -->
 										<table id="adminBSTList" border="2" style="display:none;">
 										<!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
@@ -131,17 +149,17 @@
                                     </div>
                                     <!-- 회원  -->
                                     <div class="memberManageList">
-                                       	이 글은 나중에 삭제될 예정입니다.<br><br>
+                                       	<!-- 이 글은 나중에 삭제될 예정입니다.<br><br> -->
 	                                    <!-- ########## 회원 리스트  ########## -->
-										<table id="adminMemberList" border="2" style="display:none";>
+										<table id="adminMemberList" border="2" style="display:none;">
 	                                    <!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
 										</table>		
                                     </div>
                                     <!-- 쇼핑몰  -->
                                     <div class="orderManageList">
-                                       	이 글은 나중에 삭제될 예정입니다.<br><br>
+                                       	<!-- 이 글은 나중에 삭제될 예정입니다.<br><br> -->
 	                                    <!-- ########## 회원 리스트  ########## -->
-										<table id="adminOrderList" border="2" style="display:none";>
+										<table id="adminOrderList" border="2" style="display:none;">
 	                                    <!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
 										</table>		
                                     </div>

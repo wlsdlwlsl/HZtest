@@ -37,6 +37,7 @@
 	  		<value>com.dogether.domain.RunningGooVO</value>
 	  		<value>com.dogether.domain.Shopping_cartVO</value>
 	  		<value>com.dogether.domain.SportsVO</value>
+	  		<value>com.dogether.domain.ProductsVO</value>
 	  	</list>
 	  </property>
 	 </bean>

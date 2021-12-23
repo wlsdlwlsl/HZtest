@@ -31,6 +31,7 @@
                     <li><a href="boastmng.do">자랑하기 관리</a></li>
                     <li><a href="membermng.do">회원 관리</a></li>
                     <li><a href="shoppingmng">쇼핑몰 관리</a></li>
+                    <li><a href="shoppingmng">쇼핑몰 관리</a></li>
                     <li><a href="gymmanagermng.do">Gym매니저 관리</a></li>
                 </ul>
             </ul><!-- sidebar menu end-->
