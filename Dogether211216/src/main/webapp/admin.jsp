@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>관리자 페이지입니다.</title>
+    <title>첫페이지를 클릭하세여!!!!!!!!!!!!!</title>
     <!-- 공통 적용 -->
     <link rel="apple-touch-icon" href="apple-touch-icon.jpg">
     <link rel="stylesheet" href="./resources/css/templatemo-style.css">

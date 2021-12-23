@@ -13,7 +13,7 @@ $(document).ready(function() {
 				adminRNGList.empty();									// 비워놓고 시작 ==> 다른 리스트가 있을 수 있으니까
 				adminRNGList.append(									// list 테이블 헤더
 					"<tr>"
-					+ "<th width='200'>프로필사진</th>"
+//					+ "<th width='200'>프로필사진</th>"
 					+ "<th width='100'>호스트명</th>"
 					+ "<th width='400'>방설명</th>"
 					+ "<th width='150'>미팅날짜</th>"
@@ -23,8 +23,8 @@ $(document).ready(function() {
 					// console.log(row);								// 데이터가 잘 넘어왔는지 확인
 					var tr = $("<tr/>");								// <tr/> 객체 생성
 					// ######### 프로필사진 출력 (디비 완성 전까지는 방번호 출력하기)
-					var roomNumber = $("<td id='roomNumber' width='200' />").html(row.roomNumber);		// td객체를 생성 ==> roomNumber를 td에 담는다
-					tr.append(roomNumber); 																// tr에 roomNumber를 담은 td를 추가
+//					var roomNumber = $("<td id='roomNumber' width='200' />").html(row.roomNumber);		// td객체를 생성 ==> roomNumber를 td에 담는다
+//					tr.append(roomNumber); 																// tr에 roomNumber를 담은 td를 추가
 					// ##### 호스트명, 방설명(호스트한마디), 미팅날짜, 삭제 출력 #####
 					var memberID = $("<td width='100' />").text(row.memberID);	
 					tr.append(memberID);
@@ -58,6 +58,7 @@ $(document).ready(function() {
 
 		 $(".divHide").hide();				// 모든 정렬 안보이게 변경
 		 $(".sortRNG").show();				// 런닝구 정렬만 보이게 변경
+		 $(".float-right").hide();				// 상품 추가하기 보이게 변경
 //		 $(".sortBST").css("display","none");	// 왼쪽 상단에 sort 콤보박스 안보이게 css 변경
 //		 $(".sortRNG").css("display","block");	// 왼쪽 상단에 sort 콤보박스 보이게 css 변경
 		adminRNGList();							// 리스트 출력 함수 호출
@@ -122,6 +123,7 @@ $(document).ready(function() {
 		 $("#adminBSTList").show();		// 런닝구 리스트 테이블만 보이게 변경
 
 		 $(".divHide").hide();			// 모든 정렬 안보이게 변경
+		 $(".float-right").hide();				// 상품 추가하기 보이게 변경
 		 $(".sortBST").show();			// 자랑하기 정렬만 보이게 변경
 		 
 		adminBSTList();					// 리스트 출력 함수 호출
@@ -211,6 +213,7 @@ $(document).ready(function() {
 		 $("#adminMemberList").show();		// 회원 리스트 테이블만 보이게 변경
 		 
 		 $(".divHide").hide();				// 모든 정렬 안보이게 변경
+		 $(".float-right").hide();				// 상품 추가하기 보이게 변경
 		 $(".sortMember").show();			// 회원 정렬만 보이게 변경
 		 adminMemberList();					// 리스트 출력 함수 호출
 	 }); //end click 
@@ -289,23 +292,49 @@ $(document).ready(function() {
 		 $("#adminOrderList").show();		// 쇼핑몰 주문 리스트 테이블만 보이게 변경
 		 
 		 $(".divHide").hide();				// 모든 정렬 안보이게 변경
+		 $(".float-right").hide();				// 상품 추가하기 보이게 변경
 		 $(".sortOrder").show();		// 쇼핑몰 주문 정렬만 보이게 변경
 		 adminOrderList();					// 리스트 출력 함수 호출
 	 }); //end click 
 	 
 	 // ############ 쇼핑몰 상품 관리 메뉴를 클릭했을 때  ############
-	 $('#adminProduct').click(function(evt){
-		 evt.preventDefault();				// a태그 링크 기능 무력화
-		 evt.stopPropagation();				// a태그 링크 기능 무력화
-		 //alert("상품 관리 클릭");
+	 function totalProductList(){
+		 $("h1").hide();								// 페이지명 안보이게 변경
+		 $("#h1Products").show();			// 페이지명 보이게 변경
+		 $("table").hide();							// 모든 테이블 숨기기
+		 $("#totalProductList").show();	// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
+		 $(".divHide").hide();						// 모든 정렬 안보이게 변경
+		 $(".float-right").show();				// 상품 추가하기 보이게 변경
+	 }
+		 $('#adminProduct').click(function(evt){
+			 evt.preventDefault();				//a태그 기능 무력화
+			 evt.stopPropagation();				//a태그 기능 무력화
+			 totalProductList();
+		 }); //end click 
+	 
+	 // ############ 상품 추가하기를 클릭했을 때  ############
+	 $('.adminProductInsert').click(function(evt){
+		 evt.preventDefault();				//a태그 기능 무력화
+		 evt.stopPropagation();				//a태그 기능 무력화
 		 $("h1").hide();							// 페이지명 안보이게 변경
 		 $("#h1Products").show();		// 페이지명 보이게 변경
-		 
-		 $("table").hide();							// 모든 리스트 테이블을 삭제
-		 $("#totalProductList").show();	// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
-//		 $(".table2").show();					
-
-		 $(".divHide").hide();						// 모든 정렬 안보이게 변경
+		 $("table").hide();						// 모든 테이블 숨기기
+		 $(".table2").show();					// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
+		 $(".divHide").hide();					// 모든 정렬 안보이게 변경
+		 $(".float-right").hide();				// 상품 추가하기 보이게 변경
+	 }); //end click 
+	 
+	// ############ 상품 추가하기에서 등록 버튼을 클릭했을 때  ############
+	 $('.submitBtn').click(function(evt){
+		 evt.preventDefault();				//a태그 기능 무력화
+		 evt.stopPropagation();				//a태그 기능 무력화
+		 $("h1").hide();							// 페이지명 안보이게 변경
+		 $("#h1Products").show();		// 페이지명 보이게 변경
+		 $("table").hide();						// 모든 테이블 숨기기
+		 $(".table2").show();					// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
+		 $(".divHide").hide();					// 모든 정렬 안보이게 변경
+		 $(".float-right").hide();				// 상품 추가하기 보이게 변경
+		 totalProductList();
 	 }); //end click 
  
 	// ################################################

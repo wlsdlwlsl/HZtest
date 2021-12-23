@@ -111,8 +111,13 @@
 	                                </select>
 	                                <a id="orderSort" href="#orderSort">정렬하기</a>
                                 </div>
-                                
                             </div>  
+                            <!-- 상품 추가하기 -->
+                            <div class="float-right" style="display:none;">
+                                <ul class="pagination pagination-sm mb-0">
+                                    <li class="page-item"><a class="adminProductInsert" href="#adminProductInsert">상품 추가하기</a></li>
+                                </ul>
+                            </div>
                             <!-- !!!!!!!!!!!!!!!! 페이지 이동 버튼  일단 보류!!!!!!!!!!!!!!!!-->
                             <!-- <div class="float-right">
                                 <ul class="pagination pagination-sm mb-0">
@@ -132,7 +137,7 @@
                                 <div class="card-body text-center" style="margin:auto;">
 	                                <!-- 여기부터 복사하기 -->
 	                                <!-- 첫페이지 그래프 띄우기 -->
-	                                <table border="1" style="margin:auto; width: 100%; height:100%;">
+	                                <table border="2" style="margin:auto; width: 100%; height:100%;">
 	                                    <tr>
 	                                        <th>회원수<br>그제 / 어제 / 오늘<br>가입자 & 탈퇴자 <br>bar차트</th>
 	                                        <th>런닝구 매칭수<br>그제 / 어제 / 오늘<br>방개설일자별로 count(*)<br>bar차트</th>
@@ -195,7 +200,6 @@
 												<td><button name="deleteProduct.do">삭제</button></td>
 											</tr>
 										</c:forEach>
-								      		 <!-- <button id="productInsertButton">삭제</button> -->
 										</table>		
 										<!--  상품 추가하기 -->
 			                             <form method="post" action="productsInsert.do" enctype="multipart/form-data" > 

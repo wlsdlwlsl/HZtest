@@ -41,7 +41,7 @@ public class AdminMyPageController {
 	@RequestMapping("adminpage.do")
 	public void admin(Model model) {
 		System.out.println("관리자 페이지로 이동!!");
-		// 쇼핑몰 상품 리스트 출력
+//		 쇼핑몰 상품 리스트 출력
 		List<ProductsVO> list = productService.getProductsList();
 		model.addAttribute("productList",list);
 	}
@@ -85,8 +85,8 @@ public class AdminMyPageController {
 		return odList;
 	}
 	
-//	// 모든상품 
-//	@RequestMapping("totalProduct.do")
+//	// 쇼핑몰 상품 리스트 출력
+//	@RequestMapping("adminProduct.do")
 //	public void totalProduct(ProductsVO vo, Model model) {
 //		System.out.println("모든상품목록을 불러옵니다----------");
 //		List<ProductsVO> list = productService.getProductsList();
@@ -94,7 +94,7 @@ public class AdminMyPageController {
 //	}
 
 	// 상품 추가하기
-	@RequestMapping(value="productsInsert.do")
+	@RequestMapping("productsInsert.do")
 	public String productsInsert(ProductsVO vo) {
 		System.out.println("쇼핑몰 상품 추가 요청을 받음!!");
 		int result = productService.productsInsert(vo);
