@@ -282,15 +282,30 @@ $(document).ready(function() {
 		 evt.preventDefault();				//a태그 기능 무력화
 		 evt.stopPropagation();				//a태그 기능 무력화
 		 //alert("쇼핑몰 주문 관리 클릭");
-		 $("h1").hide();					// 페이지명 안보이게 변경
+		 $("h1").hide();								// 페이지명 안보이게 변경
 		 $("#h1Order").show();				// 페이지명 보이게 변경
 		 
-		 $("table").hide();					// 모든 테이블 숨기기
+		 $("table").hide();								// 모든 테이블 숨기기
 		 $("#adminOrderList").show();		// 쇼핑몰 주문 리스트 테이블만 보이게 변경
 		 
 		 $(".divHide").hide();				// 모든 정렬 안보이게 변경
-		 $(".sortOrder").show();			// 쇼핑몰 주문 정렬만 보이게 변경
+		 $(".sortOrder").show();		// 쇼핑몰 주문 정렬만 보이게 변경
 		 adminOrderList();					// 리스트 출력 함수 호출
+	 }); //end click 
+	 
+	 // ############ 쇼핑몰 상품 관리 메뉴를 클릭했을 때  ############
+	 $('#adminProduct').click(function(evt){
+		 evt.preventDefault();				// a태그 링크 기능 무력화
+		 evt.stopPropagation();				// a태그 링크 기능 무력화
+		 //alert("상품 관리 클릭");
+		 $("h1").hide();							// 페이지명 안보이게 변경
+		 $("#h1Products").show();		// 페이지명 보이게 변경
+		 
+		 $("table").hide();							// 모든 리스트 테이블을 삭제
+		 $("#totalProductList").show();	// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
+//		 $(".table2").show();					
+
+		 $(".divHide").hide();						// 모든 정렬 안보이게 변경
 	 }); //end click 
  
 	// ################################################

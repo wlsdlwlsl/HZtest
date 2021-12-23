@@ -2,8 +2,11 @@ package com.dogether.controller.mypage;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,8 +39,11 @@ public class AdminMyPageController {
 
 	// 첫페이지로 이동
 	@RequestMapping("adminpage.do")
-	public void admin() {
+	public void admin(Model model) {
 		System.out.println("관리자 페이지로 이동!!");
+		// 쇼핑몰 상품 리스트 출력
+		List<ProductsVO> list = productService.getProductsList();
+		model.addAttribute("productList",list);
 	}
 
 	// 런닝구 list 출력 + 정렬하기
@@ -78,15 +84,21 @@ public class AdminMyPageController {
 		System.out.println("쇼핑몰 주문 리스트 전달완료!!");
 		return odList;
 	}
+	
+//	// 모든상품 
+//	@RequestMapping("totalProduct.do")
+//	public void totalProduct(ProductsVO vo, Model model) {
+//		System.out.println("모든상품목록을 불러옵니다----------");
+//		List<ProductsVO> list = productService.getProductsList();
+//		model.addAttribute("productList",list);
+//	}
 
 	// 상품 추가하기
-	@RequestMapping(value="productsInsert.do") //, produces = "application/text; charset=UTF-8"
-	public String productsInsert(String productID, String productName, String productPrice, String productContent) {
+	@RequestMapping(value="productsInsert.do")
+	public String productsInsert(ProductsVO vo) {
 		System.out.println("쇼핑몰 상품 추가 요청을 받음!!");
-		System.out.println(productID+productName+productPrice+productContent);
-//		System.out.println(vo.getProductPrice());
-//		int result = productService.productsInsert(vo);
-//		System.out.println(result);
+		int result = productService.productsInsert(vo);
+		System.out.println(result);
 		return "redirect:adminpage.do";
 	}
 

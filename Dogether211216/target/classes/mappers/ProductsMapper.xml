@@ -57,13 +57,9 @@
 	</insert>
 	
 	<!-- ########## 관리자페이지 상품 추가 쿼리 ########## -->
-<!-- 	<insert id="productsInsert" parameterType="com.dogether.domain.ProductsVO">
+	<insert id="productsInsert" parameterType="com.dogether.domain.ProductsVO">
 		INSERT INTO products (ProductID,ProductName,ProductPrice,ProductContent,Product_fname,Product_realfname,Product_fsize)
 		VALUES (#{productID},#{productName},#{productPrice},#{productContent},#{product_fname},#{product_realfname},#{product_fsize})
-	</insert> -->
-	<insert id="productsInsert" parameterType="com.dogether.domain.ProductsVO">
-		INSERT INTO products (ProductID,ProductName,ProductPrice,ProductContent)
-		VALUES (#{productID},#{productName},#{productPrice},#{productContent})
 	</insert>
 	
 </mapper>

@@ -22,7 +22,7 @@
 	<script src="./resources/js/admin/adminpage.js"></script>
 	
 	<!--상품이미지 미리보기--------------------------------------------------------------------------------------------------------- -->
-<!-- 	<script> 
+	<script> 
 	   function setThumbnail(event) {
 	      var reader = new FileReader(); reader.onload = function(event) {
 	         $("#productImage_container").empty();//일단 비우자
@@ -32,12 +32,8 @@
 	         }; 
 	         reader.readAsDataURL(event.target.files[0]); 
 	      } 
-	   		$(function(){
-	   			$("#submitBtn").click(function(){
-	   				alert($("#formform").serialize());
-	   			})
-	   		})
-	</script> -->
+	</script>
+	<!--상품이미지 미리보기--------------------------------------------------------------------------------------------------------- -->
 </head>
 
 <body class="boxed-page" >
@@ -52,7 +48,7 @@
                     <li><a href="#adminBST" id="adminBST">자랑하기 관리</a></li>
                     <li><a href="#adminMember" id="adminMember">회원 관리</a></li>
                     <li><a href="#adminOrder" id="adminOrder">쇼핑몰 주문 관리</a></li>
-                    <li><a href="gymmanagermng.do">쇼핑몰 상품 관리</a></li>
+                    <li><a href="#totalproduct" id="totalproduct">쇼핑몰 상품 관리</a></li>
                     <li><a href="gymmanagermng.do">Gym매니저 관리</a></li>
                 </ul>
            </ul> <!-- sidebar menu end --> 
@@ -83,10 +79,12 @@
                         <div class="col-md-12">
                             <section class="card">
                                 <div class="card-body" style="margin:auto;">
+                                <!-- 모든 상품 리스트 출력 -->
+                                
 							    <!-- 상품 추가 start -->
-							    <form method="post" action="productsInsert.do" > <!-- enctype="multipart/form-data" -->
+							    <form method="post" action="productsInsert.do" enctype="multipart/form-data" > 
 							   	 <table class='table2' >
-							       <!--  <tr>
+							        <tr>
 							           <td class="normalbold tb_ttl">
 							              <div align="center">상품이미지</div>
 							           </td>
@@ -94,7 +92,7 @@
 							              <div id="productImage_container"></div>
 							              <input type="file" onchange="setThumbnail(event);" name='file' maxlength="60" size="30" accept="image/jpeg,.jpg,.png" required>
 							           </td>
-							        </tr> -->
+							        </tr>
 							        <tr> 
 							           <td class="normalbold tb_ttl"> 
 							              <div align="center">상품ID</div>
