@@ -298,14 +298,14 @@ $(document).ready(function() {
 	 }); //end click 
 	 
 	 // ############ 쇼핑몰 상품 관리 메뉴를 클릭했을 때  ############
-	 function totalProductList(){
+	 function totalProductList(){ 			// 모든 상품 리스트 출력 함
 		 $("h1").hide();								// 페이지명 안보이게 변경
 		 $("#h1Products").show();			// 페이지명 보이게 변경
 		 $("table").hide();							// 모든 테이블 숨기기
 		 $("#totalProductList").show();	// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
 		 $(".divHide").hide();						// 모든 정렬 안보이게 변경
 		 $(".float-right").show();				// 상품 추가하기 보이게 변경
-	 }
+	 } //end function totalProductList()
 		 $('#adminProduct').click(function(evt){
 			 evt.preventDefault();				//a태그 기능 무력화
 			 evt.stopPropagation();				//a태그 기능 무력화
@@ -319,24 +319,72 @@ $(document).ready(function() {
 		 $("h1").hide();							// 페이지명 안보이게 변경
 		 $("#h1Products").show();		// 페이지명 보이게 변경
 		 $("table").hide();						// 모든 테이블 숨기기
-		 $(".table2").show();					// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
+		 $(".table2").show();					// 상품 추가하기 테이블만 보임으로 변경
 		 $(".divHide").hide();					// 모든 정렬 안보이게 변경
-		 $(".float-right").hide();				// 상품 추가하기 보이게 변경
+		 $(".float-right").hide();				// 상품 추가하기 안보이게 변경
 	 }); //end click 
 	 
 	// ############ 상품 추가하기에서 등록 버튼을 클릭했을 때  ############
 	 $('.submitBtn').click(function(evt){
-		 evt.preventDefault();				//a태그 기능 무력화
-		 evt.stopPropagation();				//a태그 기능 무력화
-		 $("h1").hide();							// 페이지명 안보이게 변경
-		 $("#h1Products").show();		// 페이지명 보이게 변경
-		 $("table").hide();						// 모든 테이블 숨기기
-		 $(".table2").show();					// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
-		 $(".divHide").hide();					// 모든 정렬 안보이게 변경
-		 $(".float-right").hide();				// 상품 추가하기 보이게 변경
+//		 evt.preventDefault();				// 
+//		 evt.stopPropagation();				//
 		 totalProductList();
 	 }); //end click 
- 
+	 
+	// ############ 상품 수정 버튼을 클릭했을 때  ############
+	 let isEditing = 0;
+//	 $('#updateProduct').click(function(){
+		   $(document).on("click","#updateProduct",function(){
+		      //수정다하고나서
+		      if(isEditing==1){
+		         if($(this).text()==="확인"){
+		            isEditing = 0;
+		            var productIDtext = $(".productID").text()
+		            var text = $('.productPrice').val();
+		            $.ajax({
+		                 type: 'get',
+		                 url: 'updateProduct.do',
+		                 data : {productPrice : text, productID : productIDtext },
+		                 //한글처리
+		                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		                 
+		                 success : function(result){
+		                	 totalProductList();
+		                 },
+		                 error : function(err){
+		                    alert('fail');
+		                 }
+		              });
+		           }
+		      }
+		      //수정하기전에..
+		      else{
+		         isEditing = 1;
+		         let productPrice = $(this).parent().prev();
+		         let productName = $(this).parent().prev().prev();
+		         let productContect = $(this).parent().prev().prev().prev();
+		         
+		         let productPriceText = $(this).parent().prev().text();
+		         let productNameText = $(this).parent().prev().prev().text();
+		         let productContectText = $(this).parent().prev().prev().prev().text();
+		         console.log(productName);
+		         productPrice.val('');
+		         productName.val('');
+		         productContect.val('');
+		         productPrice.html("<input type='text' name='productPrice' class='productPrice'>");
+		         productName.html("<input type='text' name='productName' class='productName'>");
+		         productContect.html("<input type='text' name='productContect' class='productContect'>");
+		         $(this).text('확인')
+		      }
+		      
+		      
+		   })
+		 
+		 
+//	 }); //end click 
+	 
+	 
+	 
 	// ################################################
 	
 	 // ############ 런닝구 정렬하기를 클릭했을 때  ############

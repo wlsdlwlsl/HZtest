@@ -62,4 +62,9 @@
 		VALUES (#{productID},#{productName},#{productPrice},#{productContent},#{product_fname},#{product_realfname},#{product_fsize})
 	</insert>
 	
+	<update id="productsUpdate" parameterType="com.dogether.domain.ProductsVO">
+		INSERT INTO products(ProductName,ProductPrice,ProductContent)
+		VALUES (#{ProductName},#{ProductPrice},#{ProductContent})
+	</update>
+	
 </mapper>

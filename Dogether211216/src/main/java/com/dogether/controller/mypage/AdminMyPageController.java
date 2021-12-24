@@ -101,5 +101,13 @@ public class AdminMyPageController {
 		System.out.println(result);
 		return "redirect:adminpage.do";
 	}
+	
+	// 상품 추가하기
+		@RequestMapping("updateProduct.do")
+		public String productsUpdate(ProductsVO vo) {
+			System.out.println("쇼핑몰 상품 추가 요청을 받음!!");
+			productService.productsUpdate(vo);
+			return "redirect:adminpage.do";
+		}
 
 }

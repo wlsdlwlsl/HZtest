@@ -9,4 +9,5 @@ public interface ProductService {
 	public int productsInsert(ProductsVO vo);
 	//모든 상품목록 가져오기
 	List<ProductsVO> getProductsList();
+	public void productsUpdate(ProductsVO vo);
 }

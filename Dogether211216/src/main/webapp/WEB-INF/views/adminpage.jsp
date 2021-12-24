@@ -179,6 +179,7 @@
                                     </div>
                                     <div class="productsManageList">
 	                                    <!-- ########## 상품 리스트  ########## -->
+	                                    
 										<table id="totalProductList" border="2" style="display:none;">
 											<tr>
 											<th>상품이미지</th>
@@ -192,12 +193,12 @@
 											<c:forEach items="${productList}" var="product">
 											<tr class="productListTR">
 												<td><img class="productInsertImage" src="./resources/img/shoppingmall/productimgs/${product.product_realfname}" /></td>
-												<td>${product.productID}</td>
-												<td>${product.productName}</td>
-												<td>${product.productContent}</td>
-												<td>${product.productPrice}</td>
-												<td><button name="updateProduct.do">수정</button></td>
-												<td><button name="deleteProduct.do">삭제</button></td>
+												<td class="productID">${product.productID}</td>
+												<td class="productName">${product.productName}</td>
+												<td class="productContent">${product.productContent}</td>
+												<td class="productPrice">${product.productPrice}</td>
+												<td><button id="updateProduct" >수정</button></td>
+												<td><button id="deleteProduct" >삭제</button></td>
 											</tr>
 										</c:forEach>
 										</table>		

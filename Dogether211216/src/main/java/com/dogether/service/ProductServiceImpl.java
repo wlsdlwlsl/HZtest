@@ -23,6 +23,11 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductsVO> getProductsList() {
 		System.out.println("Service에서 상품리스트 호출함");
 		return productsDAO.getProductsList();
-	} 
+	}
 
+	@Override
+	public void productsUpdate(ProductsVO vo) {
+		System.out.println("Service에서 상품수정 호출함");
+	} 
+	
 }

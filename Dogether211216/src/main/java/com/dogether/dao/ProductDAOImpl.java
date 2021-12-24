@@ -25,4 +25,10 @@ public class ProductDAOImpl implements ProductDAO{
 		return mybatis.selectList("ProductsDAO.getProductsList");
 	}
 
+	@Override
+	public void productsUpdate(ProductsVO vo) {
+		System.out.println("mybatis 상품리스트 호출함");
+		mybatis.update("ProductsDAO.productsUpdate");
+	}
+	
 }
