@@ -203,7 +203,7 @@
 												<td><button id="deleteProduct" >삭제</button></td>
 											</tr>
 										</c:forEach>
-										</table>		 --%>
+										</table>		  --%>
 										<!--  상품 추가하기 -->
 			                             <form method="post" id="productInput" action="productsInsert.do" enctype="multipart/form-data" > 
 									   	 <table border="1" class='productList table2' style="display:none; ">
