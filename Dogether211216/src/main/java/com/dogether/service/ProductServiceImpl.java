@@ -24,10 +24,17 @@ public class ProductServiceImpl implements ProductService{
 		System.out.println("Service에서 상품리스트 호출함");
 		return productsDAO.getProductsList();
 	}
+	
+	@Override
+	public void productsDelete(ProductsVO vo) {
+		System.out.println("Service에서 상품 삭제 호출함");
+		productsDAO.productsDelete(vo);
+	} 
 
 	@Override
 	public void productsUpdate(ProductsVO vo) {
-		System.out.println("Service에서 상품수정 호출함");
-	} 
-	
+		System.out.println("Service에서 상품 수정 호출함");
+		productsDAO.productsUpdate(vo);
+	}
+
 }

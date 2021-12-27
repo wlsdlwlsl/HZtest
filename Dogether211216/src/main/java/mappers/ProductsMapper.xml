@@ -62,9 +62,17 @@
 		VALUES (#{productID},#{productName},#{productPrice},#{productContent},#{product_fname},#{product_realfname},#{product_fsize})
 	</insert>
 	
+	<!-- ########## 관리자페이지 상품 삭제 쿼리 ########## -->
+	<delete id="productsDelete" parameterType="com.dogether.domain.ProductsVO">
+		DELETE FROM products
+		WHERE ProductID = #{productID}
+	</delete>
+	
+	<!-- ########## 관리자페이지 상품 수정 쿼리 ########## -->
 	<update id="productsUpdate" parameterType="com.dogether.domain.ProductsVO">
-		INSERT INTO products(ProductName,ProductPrice,ProductContent)
-		VALUES (#{ProductName},#{ProductPrice},#{ProductContent})
+		UPDATE products
+		SET ProductName = #{productName}, ProductPrice = #{productPrice}, ProductContent = #{productContent} 
+		WHERE ProductID = #{productID}
 	</update>
 	
 </mapper>

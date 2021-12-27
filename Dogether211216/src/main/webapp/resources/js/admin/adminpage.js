@@ -297,22 +297,69 @@ $(document).ready(function() {
 		 adminOrderList();					// 리스트 출력 함수 호출
 	 }); //end click 
 	 
-	 // ############ 쇼핑몰 상품 관리 메뉴를 클릭했을 때  ############
-	 function totalProductList(){ 			// 모든 상품 리스트 출력 함
+	 function adminProductsList(){
+			$.ajax({
+				type : 'get',
+				url : 'adminProducts.do',
+			    dataType : 'json',																	// db(서버)에서 받을 때 데이터 타입
+	//				data: { sortTypeRNG : $(".sortTypeRNG").val() },
+			    success : function(resultProducts){
+					// ##### 동적으로 상품 리스트 만들기 #####
+					var adminProductsList = $("#adminProductsList");					// adminpage.jsp에 table id를 변수에 저장
+					adminProductsList.empty();									// 비워놓고 시작 ==> 다른 리스트가 있을 수 있으니까
+					adminProductsList.append(									// list 테이블 헤더
+						"<tr>"
+						+ "<th>상품이미지</th>"
+						+ "<th>상품ID</th>"
+						+ "<th>상품명</th>"
+						+ "<th>상품상세설명</th>"
+						+ "<th>상품가격</th>"
+						+ "<th>상품수정</th>"
+						+ "<th>상품삭제</th>"
+						+"</tr>");
+					for(row of resultProducts){									// 향상된 for문 (list row : resultProducts) ==> 변수명은 상관없음
+						console.log(row);
+						var tr = $("<tr/>");												// <tr/> 객체 생성
+						var product_realfname = $("<td class='productInsertImage'/>").html('<img  src="./resources/img/shoppingmall/productimgs/' + row.product_realfname + '"/>');	
+						tr.append(product_realfname);
+						var productID = $("<td class='productID'/>").html(row.productID);
+						tr.append(productID);
+						var productName = $("<td class='productName'/>").html(row.productName);
+						tr.append(productName);
+						var productContent = $("<td class='productContent'/>").html(row.productContent);
+						tr.append(productContent); 
+						var productPrice = $("<td class='productPrice'/>").html(row.productPrice);
+						tr.append(productPrice);
+						var updateProduct = $("<td/>").html("<button id='updateProduct'>수정</button>");
+						tr.append(updateProduct);
+						var deleteProduct = $("<td/>").html("<button id='deleteProduct'>삭제</button>");
+						tr.append(deleteProduct);
+						
+						adminProductsList.append(tr);		// 모든 컬럼 정보를 append한 tr을 list에 append
+					} // end for문
+				},	// end success
+				error : function(err){
+					alert('전송실패');
+					console.log(err);
+				} //end error		
+			}) // end ajax
+		} // end function adminProductsList()
+	
+	 // ############ 쇼핑물 상품 관리 메뉴를 클릭했을 때  ############
+	 $('#adminProducts').click(function(evt){
+		 evt.preventDefault();				// a태그 링크 기능 무력화
+		 evt.stopPropagation();				// a태그 링크 기능 무력화
 		 $("h1").hide();								// 페이지명 안보이게 변경
 		 $("#h1Products").show();			// 페이지명 보이게 변경
 		 $("table").hide();							// 모든 테이블 숨기기
-		 $("#totalProductList").show();	// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
+		 $("#adminProductsList").show();	// 쇼핑몰 상품 리스트 테이블만 보임으로 변경
 		 $(".divHide").hide();						// 모든 정렬 안보이게 변경
 		 $(".float-right").show();				// 상품 추가하기 보이게 변경
-	 } //end function totalProductList()
-		 $('#adminProduct').click(function(evt){
-			 evt.preventDefault();				//a태그 기능 무력화
-			 evt.stopPropagation();				//a태그 기능 무력화
-			 totalProductList();
-		 }); //end click 
+		 adminProductsList();							// 리스트 출력 함수 호출
+	 }); //end click 
 	 
 	 // ############ 상품 추가하기를 클릭했을 때  ############
+//	 function adminProductInsert(){
 	 $('.adminProductInsert').click(function(evt){
 		 evt.preventDefault();				//a태그 기능 무력화
 		 evt.stopPropagation();				//a태그 기능 무력화
@@ -323,67 +370,90 @@ $(document).ready(function() {
 		 $(".divHide").hide();					// 모든 정렬 안보이게 변경
 		 $(".float-right").hide();				// 상품 추가하기 안보이게 변경
 	 }); //end click 
-	 
-	// ############ 상품 추가하기에서 등록 버튼을 클릭했을 때  ############
+//	 }
+	// ############ 상품 추가하기에서 등록/취소 버튼을 클릭했을 때  ############
 	 $('.submitBtn').click(function(evt){
 //		 evt.preventDefault();				// 
 //		 evt.stopPropagation();				//
-		 totalProductList();
+		 adminProductsList();
 	 }); //end click 
+	 
+	 // ############ 상품 삭제 버튼을 클릭했을 때  ############
+	 $(document).on("click","#deleteProduct",function(){
+		 alert("버튼클릭");
+//		 evt.preventDefault();				//a태그 기능 무력화
+//		 evt.stopPropagation();				//a태그 기능 무력화
+         var deleteProductID = $(this).parent().prev().prev().prev().prev().prev().text();
+         console.log(deleteProductID);
+		 $.ajax({
+			 url : "productsDelete.do",
+			 data : {productID : deleteProductID},
+			 success : function(result){
+				 alert("선택하신 상품을 삭제했습니다.");
+				 adminProductsList();
+			 },
+			 error : function(err){
+				 alert("상품 삭제 실패!");
+			 }
+		 })
+	 }); //end click
 	 
 	// ############ 상품 수정 버튼을 클릭했을 때  ############
 	 let isEditing = 0;
-//	 $('#updateProduct').click(function(){
 		   $(document).on("click","#updateProduct",function(){
 		      //수정다하고나서
+			   let thiss = $(this);
 		      if(isEditing==1){
-		         if($(this).text()==="확인"){
+		         if($(this).text()==="완료"){
 		            isEditing = 0;
-		            var productIDtext = $(".productID").text()
-		            var text = $('.productPrice').val();
+		            var productPrice = $(this).parent().prev();
+		            var productContent = $(this).parent().prev().prev();
+		            var productName = $(this).parent().prev().prev().prev();
+		            
+		            var productIDtext = $(this).parent().prev().prev().prev().prev().text();
+		            var productPriceVal = $('#productPrice').val();
+		            var productContentVal = $('#productContent').val();
+		            var productNameVal = $('#productName').val();
+		            
 		            $.ajax({
 		                 type: 'get',
 		                 url: 'updateProduct.do',
-		                 data : {productPrice : text, productID : productIDtext },
+		                 data : { productID : productIDtext, productPrice : productPriceVal, 
+		                	 		  productContent : productContentVal, productName : productNameVal },
 		                 //한글처리
 		                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		                 
 		                 success : function(result){
-		                	 totalProductList();
+		                	 $(thiss).text("수정");
+		                	 alert("상품 수정 완료!");
+		                	 adminProductsList();
 		                 },
 		                 error : function(err){
-		                    alert('fail');
-		                 }
-		              });
-		           }
-		      }
+		                    alert('상품 수정 실패!');
+		                 } //end error
+		              }); //end ajax
+		           } //end inner if
+		      } //end outer if
 		      //수정하기전에..
 		      else{
 		         isEditing = 1;
 		         let productPrice = $(this).parent().prev();
-		         let productName = $(this).parent().prev().prev();
-		         let productContect = $(this).parent().prev().prev().prev();
+		         let productContect = $(this).parent().prev().prev();
+		         let productName = $(this).parent().prev().prev().prev();
 		         
 		         let productPriceText = $(this).parent().prev().text();
-		         let productNameText = $(this).parent().prev().prev().text();
-		         let productContectText = $(this).parent().prev().prev().prev().text();
-		         console.log(productName);
+		         let productContectText = $(this).parent().prev().prev().text();
+		         let productNameText = $(this).parent().prev().prev().prev().text();
 		         productPrice.val('');
 		         productName.val('');
 		         productContect.val('');
-		         productPrice.html("<input type='text' name='productPrice' class='productPrice'>");
-		         productName.html("<input type='text' name='productName' class='productName'>");
-		         productContect.html("<input type='text' name='productContect' class='productContect'>");
-		         $(this).text('확인')
-		      }
+		         productPrice.html("<input type='text' name='productPrice' id='productPrice'>");
+		         productName.html("<input type='text' name='productName' id='productName'>");
+		         productContect.html("<input type='text' name='productContect' id='productContent'>");
+		         $(this).text('완료')
+		      } //end else
 		      
-		      
-		   })
-		 
-		 
-//	 }); //end click 
-	 
-	 
+		   }); //end click
 	 
 	// ################################################
 	
@@ -409,5 +479,36 @@ $(document).ready(function() {
 	 }); //end click 
 	 
 	// ################################################
+	// 상품추가하기 전송 버튼을 눌렀을 때 값이 비어있으면---------------------
+     $('#submitBtn').click(function(){
+       if( $.trim($(".productID").val()) == '' ){
+            alert("상품 아이디를 입력해주세요.");
+//            $("#productID").focus();
+            return window.location.href="productsInsert.do";
+        }
+
+       if($.trim($('#productName').val())==''){
+          alert("상품명을 입력해주세요.");
+//          $('#productName').focus());
+          return location.href ="productsInsert.do";
+       }
+
+       if($.trim($('#productPrice').val())==''){
+          alert("상품 가격을 입력해주세요.");
+//          $('#productPrice').focus();
+          return location.href ="productsInsert.do";
+       }
+       
+       if($.trim($('#productContent').val())==''){
+    	   alert("상품 상세 정보를 입력해주세요.");
+//    	   $('#productContent').focus();
+           return location.href ="productsInsert.do";
+       }
+
+       
+        // 자료를 전송합니다.
+        $('#productInput').submit();
+   });
+//-------------------------------------------------------
 
 });	// end ready

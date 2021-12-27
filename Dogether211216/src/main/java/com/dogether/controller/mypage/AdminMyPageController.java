@@ -42,8 +42,8 @@ public class AdminMyPageController {
 	public void admin(Model model) {
 		System.out.println("관리자 페이지로 이동!!");
 //		 쇼핑몰 상품 리스트 출력
-		List<ProductsVO> list = productService.getProductsList();
-		model.addAttribute("productList",list);
+//		List<ProductsVO> list = productService.getProductsList();
+//		model.addAttribute("productList",list);
 	}
 
 	// 런닝구 list 출력 + 정렬하기
@@ -85,13 +85,14 @@ public class AdminMyPageController {
 		return odList;
 	}
 	
-//	// 쇼핑몰 상품 리스트 출력
-//	@RequestMapping("adminProduct.do")
-//	public void totalProduct(ProductsVO vo, Model model) {
-//		System.out.println("모든상품목록을 불러옵니다----------");
-//		List<ProductsVO> list = productService.getProductsList();
-//		model.addAttribute("productList",list);
-//	}
+	// 쇼핑몰 상품 리스트 출력
+	@RequestMapping("adminProducts.do")
+	@ResponseBody
+	public List<ProductsVO> totalProduct(ProductsVO vo) {
+		System.out.println("모든상품목록을 불러옵니다----------");
+		List<ProductsVO> list = productService.getProductsList();
+		return list;
+	}
 
 	// 상품 추가하기
 	@RequestMapping("productsInsert.do")
@@ -102,12 +103,21 @@ public class AdminMyPageController {
 		return "redirect:adminpage.do";
 	}
 	
-	// 상품 추가하기
-		@RequestMapping("updateProduct.do")
-		public String productsUpdate(ProductsVO vo) {
-			System.out.println("쇼핑몰 상품 추가 요청을 받음!!");
+	// 상품 삭제하기
+	@RequestMapping("productsDelete.do")
+	@ResponseBody
+	public void productsDelete(ProductsVO vo) {
+		System.out.println("쇼핑몰 상품 삭제 요청을 받음!!");
+		productService.productsDelete(vo);
+	}
+	
+	// 상품 수정하기 (상품가격, 상품상세설명, 상품이름만)
+		@RequestMapping(value="updateProduct.do", produces="application/text; charset=UTF-8")
+		@ResponseBody
+		public void productsUpdate(ProductsVO vo) {
+			System.out.println("쇼핑몰 상품 수정 요청을 받음!!");
+			System.out.println(vo.getProductID() + vo.getProductPrice() + vo.getProductContent() + vo.getProductName());
 			productService.productsUpdate(vo);
-			return "redirect:adminpage.do";
 		}
 
 }

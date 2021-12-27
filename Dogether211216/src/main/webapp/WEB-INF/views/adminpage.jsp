@@ -46,7 +46,7 @@
                     <li><a href="#adminBST" id="adminBST">자랑하기 관리</a></li>
                     <li><a href="#adminMember" id="adminMember">회원 관리</a></li>
                     <li><a href="#adminOrder" id="adminOrder">쇼핑몰 주문 관리</a></li>
-                    <li><a href="#adminProduct" id="adminProduct">쇼핑몰 상품 관리</a></li>
+                    <li><a href="#adminProducts" id="adminProducts">쇼핑몰 상품 관리</a></li>
                     <li><a href="gymmanagermng.do">Gym매니저 관리</a></li>
                 </ul>
            </ul> <!-- sidebar menu end --> 
@@ -179,8 +179,10 @@
                                     </div>
                                     <div class="productsManageList">
 	                                    <!-- ########## 상품 리스트  ########## -->
-	                                    
-										<table id="totalProductList" border="2" style="display:none;">
+	                                    <table id="adminProductsList" border="2" style="display:none;">
+	                                    <!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
+										</table>		
+										<%-- <table id="totalProductList" border="2" style="display:none;">
 											<tr>
 											<th>상품이미지</th>
 											<th>상품ID</th>
@@ -201,9 +203,9 @@
 												<td><button id="deleteProduct" >삭제</button></td>
 											</tr>
 										</c:forEach>
-										</table>		
+										</table>		 --%>
 										<!--  상품 추가하기 -->
-			                             <form method="post" action="productsInsert.do" enctype="multipart/form-data" > 
+			                             <form method="post" id="productInput" action="productsInsert.do" enctype="multipart/form-data" > 
 									   	 <table border="1" class='productList table2' style="display:none; ">
 									        <tr>
 									           <td class="normalbold tb_ttl">
@@ -250,7 +252,7 @@
 									           <td colspan="4" class="normal" width="70%" height="5%"> 
 									              <div align="center"> 
 									                <input type="submit" class="submitBtn" id="submitBtn" value="등   록"/>
-									                <input type="reset" class="submitBtn" value="취   소"/>
+									                <input type="reset" class="submitCancleBtn" value="취   소"/>
 									              </div>
 									           </td>
 									       </tr>
