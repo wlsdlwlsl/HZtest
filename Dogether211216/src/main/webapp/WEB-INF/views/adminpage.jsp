@@ -20,6 +20,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<script src="./resources/js/admin/common-scripts.js"></script>
 	<script src="./resources/js/admin/adminpage.js"></script>
+	<script src="./resources/js/admin/adminvalid.js"></script>
 	<!--상품이미지 미리보기--------------------------------------------------------------------------------------------------------- -->
 	<script> 
 	   function setThumbnail(event) {
@@ -221,7 +222,7 @@
 									              <div align="center">상품ID</div>
 									           </td>
 									           <td colspan="3" class="normal"> 
-									              <input type="text" name="productID" id="productID" size="20"/> 
+									              <input type="text" name="productID" id="productID" size="20" required/> 
 									           </td>
 									       </tr>
 									       <tr> 
@@ -229,7 +230,7 @@
 									              <div align="center">상품명</div>
 									           </td>
 									           <td colspan="3" class="normal"> 
-									              <input type="text" name="productName" id="productName" size="20"/> 
+									              <input type="text" name="productName" id="productName" size="20" required/> 
 									           </td>
 									       </tr>
 									       <tr> 
@@ -237,7 +238,7 @@
 									              <div align="center">상품가격</div>
 									           </td>
 									           <td width="154" class="normal"> 
-									              <input type="text" name="productPrice" id="productPrice"/>
+									              <input type="text" name="productPrice" id="productPrice" required/>
 									           </td>
 									       </tr>
 									       <tr> 
@@ -245,7 +246,7 @@
 									              <div align="center">상품 상세 정보</div>
 									           </td>
 									           <td colspan="3" height="23" class="normal"> 
-													<textarea name="productContent" id="productContent" ></textarea>
+													<textarea name="productContent" id="productContent" required></textarea>
 									           </td>
 									       </tr>
 									       <tr>
