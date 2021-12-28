@@ -12,4 +12,10 @@
 		</choose>
 	</select> 
 	
+	<!-- 자랑하기 삭제 -->
+   <delete id="deleteBST" parameterType="BoardVO">
+		DELETE FROM board
+		WHERE BoardID = #{boardID}
+	</delete>
+	
 </mapper>

@@ -1,5 +1,6 @@
 package com.dogether.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,12 @@ public interface RunningGooDAO {
 	// 런닝구 방 리스트 불러오기
 	public List<RunningGooVO> getRNRoomList(RunningGooVO vo);
 	
+	// 런닝구 방 리스트 불러오기
+	public List<HashMap<String,Object>> getRNGListWithProfile(RunningGooVO sortTypeRNG);
+	
 	// 런닝구 방 갯수 얻어오기
 	int getRunningGooRoomCount(RunningGooVO vo);
+	
+	//	런닝구 방 삭제
+	public void deleteRNG(RunningGooVO vo);
 }

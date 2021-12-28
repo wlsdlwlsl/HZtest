@@ -43,11 +43,22 @@ public class AdminMyPageController {
 	// 런닝구 list 출력 + 정렬하기
 	@RequestMapping("adminRNG.do")
 	@ResponseBody
-	public List<RunningGooVO> adminRNG(RunningGooVO vo) {
-		System.out.println(vo.getSortTypeRNG());
-		List<RunningGooVO> voList = runningGooService.getRNRoomList(vo);
+	public List<HashMap<String,Object>> getRNGListWithProfile(RunningGooVO sortTypeRNG) {
+		System.out.println(sortTypeRNG.getSortTypeRNG());
+		List<HashMap<String,Object>> voList = runningGooService.getRNGListWithProfile(sortTypeRNG);
+//		for(HashMap<String, Object> od : voList) {
+//			System.out.println(od.get("meetingTime")+"입니다;");
+//		}
 		System.out.println("런닝구 리스트 전달완료!!");
 		return voList;
+	}
+	
+	// 런닝구방 삭제하기
+	@RequestMapping("RNGDelete.do")
+	@ResponseBody
+	public void deleteRNG(RunningGooVO vo) {
+		System.out.println("런닝구방 삭제 요청을 받음!!");
+		runningGooService.deleteRNG(vo);
 	}
 
 	// 자랑하기 list 출력
@@ -59,6 +70,14 @@ public class AdminMyPageController {
 		System.out.println("자랑하기 리스트 전달완료!!");
 		return boList;
 	}
+	
+	// 자랑하기 삭제하기
+	@RequestMapping("deleteBST.do")
+	@ResponseBody
+	public void deleteBST(BoardVO vo) {
+		System.out.println("자랑하기 삭제 요청을 받음!!");
+		boardService.deleteBST(vo);
+	}
 
 	// 회원 list 출력
 	@RequestMapping("adminMember.do")
@@ -69,15 +88,23 @@ public class AdminMyPageController {
 		System.out.println("회원 리스트 전달완료!!");
 		return memList;
 	}
+	
+	// 회원 삭제(탈퇴)하기
+	@RequestMapping("deleteMember.do")
+	@ResponseBody
+	public void deleteMember(MemberVO vo) {
+		System.out.println("회원 삭제(탈퇴) 요청을 받음!!");
+		memberService.deleteMember(vo);
+	}
 
 	// 쇼핑몰 주문 list 출력
 	@RequestMapping("adminOrder.do")
 	@ResponseBody
 	public List<HashMap<String,Object>> adminOrder(OrderVO sortTypeOrder) {
 		List<HashMap<String,Object>> odList = orderService.getOrderList(sortTypeOrder);
-		for(HashMap<String, Object> od : odList) {
-			System.out.println(od.get("returnStatus"));
-		}
+//		for(HashMap<String, Object> od : odList) {
+//			System.out.println(od.get("returnStatus"));
+//		}
 		System.out.println("쇼핑몰 주문 리스트 전달완료!!");
 		return odList;
 	}

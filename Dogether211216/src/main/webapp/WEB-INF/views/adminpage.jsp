@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +48,7 @@
                     <li><a href="#adminMember" id="adminMember">회원 관리</a></li>
                     <li><a href="#adminOrder" id="adminOrder">쇼핑몰 주문 관리</a></li>
                     <li><a href="#adminProducts" id="adminProducts">쇼핑몰 상품 관리</a></li>
-                    <li><a href="gymmanagermng.do">Gym매니저 관리</a></li>
+                  <!--   <li><a href="gymmanagermng.do">Gym매니저 관리</a></li> -->
                 </ul>
            </ul> <!-- sidebar menu end --> 
         </div>
@@ -69,7 +69,7 @@
                             <h1 id="h1Member" style="display:none;">회원 관리 페이지</h1>
                             <h1 id="h1Order" style="display:none;">쇼핑몰 주문 관리 페이지</h1>
                             <h1 id="h1Products" style="display:none;">쇼핑몰 상품 관리 페이지</h1>
-                            <h1 id="h1Gym" style="display:none;">Gym매니저 관리 페이지</h1>
+                          <!--   <h1 id="h1Gym" style="display:none;">Gym매니저 관리 페이지</h1> -->
                             <!-- 정렬하기 -->
                             <div class="pro-sort">
                             	<!-- 런닝구 정렬 -->

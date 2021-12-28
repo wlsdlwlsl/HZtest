@@ -3,12 +3,12 @@ package com.dogether.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.dogether.dao.MemberDAOImpl;
 import com.dogether.domain.MemberVO;
 
-@Repository("memberService")
+@Service("memberService")
 public class MemberServiceImpl implements MemberService{
 
 	@Autowired
@@ -19,4 +19,11 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.getMemberList(vo);
 	}
 
+	// 회원 삭제(탈퇴)하기
+	@Override
+	public void deleteMember(MemberVO vo) {
+		System.out.println("Service에서 회원 삭제(탈퇴) 호출함");
+		memberDAO.deleteMember(vo);		
+	}
+	
 }

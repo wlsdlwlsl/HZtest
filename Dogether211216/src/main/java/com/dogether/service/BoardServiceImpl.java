@@ -24,4 +24,13 @@ public class BoardServiceImpl implements BoardService{
 	public List<Board_ReplyVO> getReplyList(Board_ReplyVO vo){
 		return boardDAO.getReplyList(vo);
 	}
+
+	@Override
+	public void deleteBST(BoardVO vo) {
+		System.out.println("Service에서 자랑하기 삭제 호출함");
+		boardDAO.deleteBST(vo);		
+	}
+	
+	// 자랑하기 삭제
+	
 }

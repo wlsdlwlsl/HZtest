@@ -25,4 +25,12 @@ public class BoardDAOImpl implements BoardDAO{
 		return mybatis.selectList("BoardDAO.getReplyList");
 	}
 
+	// 자랑하기 삭제
+	@Override
+	public void deleteBST(BoardVO vo) {
+		System.out.println("mybatis 상품 삭제 호출함");
+		System.out.println(vo.getBoardID()+"자랑하기 삭제");
+		mybatis.delete("BoardDAO.deleteBST", vo);
+	}
+	
 }

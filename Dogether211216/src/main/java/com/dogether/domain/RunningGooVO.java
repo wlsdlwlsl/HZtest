@@ -16,7 +16,7 @@ public class RunningGooVO {
 	private float locationLat;
 	private float locationLong;
 	private String hostComment;
-	private String meetingTime;
+	private Date meetingTime;
 	private int deposit;
 	private int sortTypeRNG;	// 0이면 default / 1이면 미팅날짜순 
 	
@@ -105,10 +105,10 @@ public class RunningGooVO {
 	public void setHostComment(String hostComment) {
 		this.hostComment = hostComment;
 	}
-	public String getMeetingTime() {
+	public Date getMeetingTime() {
 		return meetingTime;
 	}
-	public void setMeetingTime(String meetingTime) {
+	public void setMeetingTime(Date meetingTime) {
 		this.meetingTime = meetingTime;
 	}
 	public int getDeposit() {

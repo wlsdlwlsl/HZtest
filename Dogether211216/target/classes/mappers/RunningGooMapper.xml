@@ -14,5 +14,28 @@
 	<select id="getRunningGooRoomCount" resultType="integer">
 		SELECT COUNT(*) FROM runninggoo;
 	</select>
+	
+	<select id="getMemberJoinRngList" resultType="hashmap" parameterType="com.dogether.domain.MemberVO">
+      SELECT *
+      FROM runninggoo NATURAL JOIN member
+      WHERE MemberID = 'member1'
+      GROUP BY MemberID;
+   </select>
+   
+   <!-- 런닝구방 + 프로필사진 출력 -->
+   <select id="getRNGListWithProfile" resultType="hashmap" parameterType="com.dogether.domain.RunningGooVO">
+      SELECT *
+      FROM runninggoo NATURAL JOIN member
+      <choose>
+			<when test="sortTypeRNG==0">ORDER BY RoomNumber DESC</when>
+			<when test="sortTypeRNG==1">ORDER BY meetingTime DESC</when>
+		</choose>
+   </select>
+   
+   <!-- 런닝구방 삭제 -->
+   <delete id="deleteRNG" parameterType="com.dogether.domain.RunningGooVO">
+		DELETE FROM runninggoo
+		WHERE RoomNumber = #{roomNumber}
+	</delete>
 
 </mapper>

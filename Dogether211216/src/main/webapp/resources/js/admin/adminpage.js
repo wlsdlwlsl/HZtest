@@ -1,6 +1,13 @@
 $(document).ready(function() {
     // ################################################ 
-   // 런닝구 방리스트를 동적 테이블로 만들기 + ajax로 화면 이동 없이 출력하기
+	// 밀리세컨드를 yyyy-mm-dd로 포
+	Date.prototype.yyyymmdd = function() {        
+        var yyyy = this.getFullYear().toString();                                   
+        var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based        
+        var dd  = this.getDate().toString();            
+        return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+	}; 
+
    function adminRNGList(){
       $.ajax({
          type : 'get',
@@ -13,24 +20,28 @@ $(document).ready(function() {
             adminRNGList.empty();                           // 비워놓고 시작 ==> 다른 리스트가 있을 수 있으니까
             adminRNGList.append(                           // list 테이블 헤더
                "<tr>"
-//               + "<th width='200'>프로필사진</th>"
+               + "<th width='150'>런닝구방번호</th>"
+               + "<th width='200'>프로필사진</th>"
                + "<th width='100'>호스트명</th>"
                + "<th width='400'>방설명</th>"
                + "<th width='150'>미팅날짜</th>"
                + "<th width='100'>삭제</th>"
                +"</tr>");
             for(row of resultRNG){                           // 향상된 for문 (list row : resultRNG) ==> 변수명은 상관없음
-               // console.log(row);                        // 데이터가 잘 넘어왔는지 확인
+//                console.log(row);                        // 데이터가 잘 넘어왔는지 확인
+            	console.log(row['meetingTime'].toString());
                var tr = $("<tr/>");                        // <tr/> 객체 생성
-               // ######### 프로필사진 출력 (디비 완성 전까지는 방번호 출력하기)
-//               var roomNumber = $("<td id='roomNumber' width='200' />").html(row.roomNumber);      // td객체를 생성 ==> roomNumber를 td에 담는다
-//               tr.append(roomNumber);                                                 // tr에 roomNumber를 담은 td를 추가
+               var roomNumber = $("<td width='150'/>").html(row['RoomNumber']);   
+               tr.append(roomNumber);
+               // ######### 프로필사진 출력
+               var member_realfname = $("<td id='member_realfname'/>").html("<img src='../resources/upload/board/"+row['Member_realfname'] +"'>");
+               tr.append(member_realfname);
                // ##### 호스트명, 방설명(호스트한마디), 미팅날짜, 삭제 출력 #####
-               var memberID = $("<td width='100' />").text(row.memberID);   
+               var memberID = $("<td width='100' />").html(row['MemberID']);   
                tr.append(memberID);
-               var hostComment = $("<td width='400' />").html(row.hostComment);
+               var hostComment = $("<td width='400' />").html(row['HostComment']);
                tr.append(hostComment);
-               var meetingTime = $("<td width='150' />").html(row.meetingTime);
+               var meetingTime = $("<td width='150' />").text(new Date(row['meetingTime']).yyyymmdd());
                tr.append(meetingTime);
                var deleteAdminRNG = $("<td width='100' />").html("<button id='deleteAdminRNG'>삭제</button>");
                tr.append(deleteAdminRNG);
@@ -64,6 +75,22 @@ $(document).ready(function() {
       adminRNGList();                     // 리스트 출력 함수 호출
     }); //end click 
     
+    // ############ 런닝구방 삭제 버튼을 클릭했을 때  ############
+    $(document).on("click","#deleteAdminRNG",function(){
+         var deleteRoomNumber = $(this).parent().prev().prev().prev().prev().prev().text();
+       $.ajax({
+          url : "RNGDelete.do",
+          data : { roomNumber : deleteRoomNumber },
+          success : function(result){
+             alert("선택하신 런닝구방을 삭제했습니다.");
+             adminRNGList();
+          },
+          error : function(err){
+             alert("런닝구방 삭제 실패!");
+          }
+       })
+    }); //end click
+    
    // ################################################
    // 자랑하기 리스트를 동적 테이블로 만들기 + ajax로 화면 이동 없이 출력하기
    function adminBSTList(){
@@ -78,6 +105,7 @@ $(document).ready(function() {
             adminBSTList.empty();                           // 비워놓고 시작 ==> 다른 리스트가 있을 수 있으니까
             adminBSTList.append(                           // list 테이블 헤더
                "<tr>"
+               + "<th width='150'>글번호</th>"
                + "<th width='200'>게시글사진</th>"
                + "<th width='100'>작성자</th>"
                + "<th width='400'>글내용</th>"
@@ -87,6 +115,8 @@ $(document).ready(function() {
             for(row of resultBST){                           // 향상된 for문 (list row : resultBST) ==> 변수명은 상관없음
                console.log(row);                           // 데이터가 잘 넘어왔는지 확인
                var tr = $("<tr/>");                        // <tr/> 객체 생성
+               var boardID = $("<td width='150' />").text(row.boardID);   
+               tr.append(boardID);
                // ######### 게시글사진 출력 (디비 완성 전까지는 방번호 출력하기)
                var board_realfname = $("<td id='board_realfname'/>").html("<img src='./resources/img/imgforboard/"+ row.board_realfname +"'>");
                tr.append(board_realfname);
@@ -128,7 +158,23 @@ $(document).ready(function() {
        
       adminBSTList();               // 리스트 출력 함수 호출
     }); //end click 
- 
+
+    // ############ 자랑하기 삭제 버튼을 클릭했을 때  ############
+    $(document).on("click","#deleteAdminBST",function(){
+         var deleteBoardID = $(this).parent().prev().prev().prev().prev().prev().text();
+       $.ajax({
+          url : "deleteBST.do",
+          data : { boardID : deleteBoardID },
+          success : function(result){
+             alert("선택하신 자랑하기를 삭제했습니다.");
+             adminBSTList();
+          },
+          error : function(err){
+             alert("자랑하기 삭제 실패!");
+          }
+       })
+    }); //end click
+    
    // ################################################
    // 회원 관리 리스트를 동적 테이블로 만들기 + ajax로 화면 이동 없이 출력하기
    function adminMemberList(){
@@ -149,7 +195,7 @@ $(document).ready(function() {
                + "<th width='100'>닉네임</th>"
                + "<th width='100'>회원명</th>"
                + "<th width='200'>이동전화번호</th>"
-               + "<th width='150'>생일</th>"
+               + "<th width='150'>생년월일</th>"
                + "<th width='100'>성별</th>"
                + "<th width='450'>주소</th>"
                + "<th width='150'>블랙리스트</th>"
@@ -217,7 +263,22 @@ $(document).ready(function() {
        $(".sortMember").show();         // 회원 정렬만 보이게 변경
        adminMemberList();               // 리스트 출력 함수 호출
     }); //end click 
-    
+
+    // ############ 회원 삭제(탈퇴) 버튼을 클릭했을 때  ############
+    $(document).on("click","#deleteAdminMember",function(){
+         var deletememberID = $(this).parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().text();
+       $.ajax({
+          url : "deleteMember.do",
+          data : { memberID : deletememberID },
+          success : function(result){
+             alert("선택하신 회원을 삭제했습니다.");
+             adminMemberList();
+          },
+          error : function(err){
+             alert("회원 삭제 실패!");
+          }
+       })
+    }); //end click
    // ################################################
    // 쇼핑몰 주문 리스트를 동적 테이블로 만들기 + ajax로 화면 이동 없이 출력하기
    function adminOrderList(){
@@ -242,9 +303,9 @@ $(document).ready(function() {
                + "<th width='150'>반품상태</th>"
                +"</tr>");
             for(row of resultOrder){                                 // 향상된 for문 (list row : resultMember) ==> 변수명은 상관없음
-               console.log(row);                                    // 데이터가 잘 넘어왔는지 확인
+               console.log(row);                                  	  // 데이터가 잘 넘어왔는지 확인
                var tr = $("<tr/>");                                 // <tr/> 객체 생성
-               var orderDate = $("<td width='200' />").html(row['OrderDate']);   // td객체를 생성 ==> orderDate를 td에 담는다
+               var orderDate = $("<td width='200' />").html(new Date(row['OrderDate']).yyyymmdd());   // td객체를 생성 ==> orderDate를 td에 담는다
                tr.append(orderDate);                                  // tr에 orderDate를 담은 td를 추가
                var orderID = $("<td width='300' />").text(row['OrderID']);   
                tr.append(orderID);

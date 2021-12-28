@@ -16,7 +16,15 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	@Override
 	public List<MemberVO> getMemberList(MemberVO vo) {
-		return mybatis.selectList("testDAO.getMemberList", vo);		//두게더에서는 testDAO.getMemberList 로 해야함
-	}	
+		return mybatis.selectList("memberDAO.getMemberList", vo);		//두게더에서는 testDAO.getMemberList 로 해야함
+	}
 
+	// 회원 삭제(탈퇴)하기
+	@Override
+	public void deleteMember(MemberVO vo) {
+		System.out.println("mybatis 회원 삭제(탈퇴) 호출함");
+		System.out.println(vo.getMemberID()+"회원번호");
+		mybatis.delete("memberDAO.deleteMember", vo);		
+	}	
+	
 }

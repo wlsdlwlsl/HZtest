@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="testDAO">
+<mapper namespace="memberDAO">
 	
 	<select id="id_check" resultType="MemberVO" parameterType="MemberVO" >
 			SELECT *
@@ -37,6 +37,12 @@
 			<when test="sortTypeMember==2">WHERE blackListYN = 'Y'</when>
 		</choose>
 	</select> 
+	
+	<!-- 런닝구방 삭제 -->
+   <delete id="deleteMember" parameterType="MemberVO">
+		DELETE FROM member
+		WHERE MemberID = #{memberID}
+	</delete>
 	
 	
 </mapper>
