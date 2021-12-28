@@ -1,15 +1,12 @@
 package com.dogether.controller.mypage;
 
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dogether.domain.BoardVO;
@@ -41,9 +38,6 @@ public class AdminMyPageController {
 	@RequestMapping("adminpage.do")
 	public void admin(Model model) {
 		System.out.println("관리자 페이지로 이동!!");
-//		 쇼핑몰 상품 리스트 출력
-//		List<ProductsVO> list = productService.getProductsList();
-//		model.addAttribute("productList",list);
 	}
 
 	// 런닝구 list 출력 + 정렬하기
@@ -79,13 +73,16 @@ public class AdminMyPageController {
 	// 쇼핑몰 주문 list 출력
 	@RequestMapping("adminOrder.do")
 	@ResponseBody
-	public List<OrderVO> adminOrder() {
-		List<OrderVO> odList = orderService.getOrderList();
+	public List<HashMap<String,Object>> adminOrder(OrderVO sortTypeOrder) {
+		List<HashMap<String,Object>> odList = orderService.getOrderList(sortTypeOrder);
+		for(HashMap<String, Object> od : odList) {
+			System.out.println(od.get("returnStatus"));
+		}
 		System.out.println("쇼핑몰 주문 리스트 전달완료!!");
 		return odList;
 	}
 	
-	// 쇼핑몰 상품 리스트 출력
+	// 쇼핑몰 상품 list 출력
 	@RequestMapping("adminProducts.do")
 	@ResponseBody
 	public List<ProductsVO> totalProduct(ProductsVO vo) {
@@ -96,11 +93,12 @@ public class AdminMyPageController {
 
 	// 상품 추가하기
 	@RequestMapping("productsInsert.do")
-	public String productsInsert(ProductsVO vo) {
+	@ResponseBody
+	public void productsInsert(ProductsVO vo) {
 		System.out.println("쇼핑몰 상품 추가 요청을 받음!!");
 		int result = productService.productsInsert(vo);
 		System.out.println(result);
-		return "redirect:adminpage.do";
+//		return "redirect:adminOrder.do";
 	}
 	
 	// 상품 삭제하기

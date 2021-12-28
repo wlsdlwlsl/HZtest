@@ -62,4 +62,38 @@
 //	
 ////	document.newProduct.submit()
 //	
+
+    function checkUpdateProduct(){
+    	var productID = document.getElementById("productID");
+    	var productName = document.getElementById("productName");
+    	var productPrice = document.getElementById("productPrice");
+    	var productContent = document.getElementById("productContent");
+    	
+//    	//상품 아이디체크
+//    	if(!check(/^P[0-9]{4,11}$/, productId,
+//    	 "[상품 코드]\nP와 숫자를 조합하여 5~12까지 입력하세요/n 첫 글자는 반드시 P로 시작하세요")){
+//    	 	return false;
+//    	 }
+    	
+	let productPriceVal = $('#productPrice').val();
+    let productContentVal = $('#productContent').val();
+    let productNameVal = $('#productName').val();
+	//상품명 체크
+     if($.trim($('#productName').val())==''){
+        alert("상품명을 입력해주세요.");
+        $('#productName').focus();
+        return false;
+     }
+     if($.trim($('#productContent').val())==''){
+  	   alert("상품 상세 정보를 입력해주세요.");
+  	   $('#productContent').focus();
+  	   return false;
+     }
+     if($.trim($('#productPrice').val())==''){
+        alert("상품 가격을입력해주세요.");
+        $('#productPrice').focus();
+        return false;
+     }
+     $('#updateProduct1').submit();
+    }	
 //}

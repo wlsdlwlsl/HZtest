@@ -3,9 +3,17 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="OrderDAO">
 	
-	<select id="getOrderList" resultType="OrderVO" parameterType="OrderVO">
-		SELECT *
-		FROM orders
+	<!-- 주문 List 출력 -->
+	<select id="getOrderList" resultType="hashmap" parameterType="OrderVO">
+		SELECT Product_realfname,OrderID,MemberID,ProductID,OrderDate,BuyingConfirmYN,ReturnYN,returnstatus
+     	FROM orders NATURAL JOIN products
+		<choose>
+			<when test="sortTypeOrder==4">ORDER BY OrderDate</when>
+			<when test="sortTypeOrder==5">WHERE BuyingConfirmYN='Y'</when>
+			<when test="sortTypeOrder==1">WHERE returnStatus=1</when>
+			<when test="sortTypeOrder==2">WHERE returnStatus=2</when>
+			<when test="sortTypeOrder==3">WHERE returnStatus=3</when>
+		</choose>
 	</select> 
 	
 </mapper>

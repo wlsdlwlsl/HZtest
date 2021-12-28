@@ -103,12 +103,12 @@
                                 <!-- 주문 정렬 -->
                                 <div class="sortOrder divHide" style="display:none;">
 	                                <label class="pro-lab">Sort By</label>
-	                                <select class="styled" >
-	                                    <option id="dateOfOrder" value="dateOfOrder">주문일자순</option>
-	                                    <option id="confirmY" value="confirmY">주문확정만</option>
-	                                    <option id="return1" value="return1">반품신청만</option>
-	                                    <option id="return2" value="return2">반품처리중만</option>
-	                                    <option id="return3" value="return3">반품완료만</option>
+	                                <select class="sortTypeOrder" name="sortTypeOrder">
+	                                    <option id="dateOfOrder" value="4">주문일자순</option>
+	                                    <option id="confirmY" value="5">구매확정만</option>
+	                                    <option id="return1" value="1">반품신청만</option>
+	                                    <option id="return2" value="2">반품처리중만</option>
+	                                    <option id="return3" value="3">반품완료만</option>
 	                                </select>
 	                                <a id="orderSort" href="#orderSort">정렬하기</a>
                                 </div>
@@ -206,7 +206,8 @@
 										</c:forEach>
 										</table>		  --%>
 										<!--  상품 추가하기 -->
-			                             <form method="post" id="productInput" action="productsInsert.do" enctype="multipart/form-data" > 
+									     <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
+			                             <form method="post" id="productInput" action="productsInsert.do" target="iframe1" enctype="multipart/form-data" > 
 									   	 <table border="1" class='productList table2' style="display:none; ">
 									        <tr>
 									           <td class="normalbold tb_ttl">

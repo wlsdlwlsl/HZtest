@@ -8,6 +8,8 @@ public class OrderVO {
 	private char buyingConfirmYN;
 	private char returnYN;
 	private int returnStatus;
+	private int sortTypeOrder;		
+	//1이면 반품신청만, 2면 반품진행중, 3이면 반품 처리완료, 4면 주문일자순, 5는 구매확정만
 	
 	public String getOrderID() {
 		return orderID;
@@ -50,6 +52,12 @@ public class OrderVO {
 	}
 	public void setReturnStatus(int returnStatus) {
 		this.returnStatus = returnStatus;
+	}
+	public int getSortTypeOrder() {
+		return sortTypeOrder;
+	}
+	public void setSortTypeOrder(int sortTypeOrder) {
+		this.sortTypeOrder = sortTypeOrder;
 	}
 	
 	

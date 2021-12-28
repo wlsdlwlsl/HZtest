@@ -4,7 +4,7 @@
 <mapper namespace="ProductsDAO">
 	
 	<select id="getProductsList" resultType="com.dogether.domain.ProductsVO">
-		SELECT * FROM products
+		SELECT * FROM products ORDER BY ProductID
 	</select>
 	
 	<select id="detailProduct" parameterType="com.dogether.domain.ProductsVO" resultType="com.dogether.domain.ProductsVO">

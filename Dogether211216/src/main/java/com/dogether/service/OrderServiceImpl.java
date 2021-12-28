@@ -1,5 +1,6 @@
 package com.dogether.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ public class OrderServiceImpl implements OrderService{
 	private OrderDAOImpl orderDAO; 
 
 	@Override
-	public List<OrderVO> getOrderList() {
-		return orderDAO.getOrderList();
+	public List<HashMap<String, Object>> getOrderList(OrderVO sortTypeOrder) {
+		return orderDAO.getOrderList(sortTypeOrder);
 	}
 
 }

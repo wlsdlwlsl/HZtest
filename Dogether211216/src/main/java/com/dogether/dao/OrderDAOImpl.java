@@ -1,5 +1,6 @@
 package com.dogether.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,8 +16,9 @@ public class OrderDAOImpl implements OrderDAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<OrderVO> getOrderList() {
-		return mybatis.selectList("OrderDAO.getOrderList");
+	public List<HashMap<String, Object>> getOrderList(OrderVO sortTypeOrder) {
+		System.out.println("sortTypeOrder"+ sortTypeOrder);
+		return mybatis.selectList("OrderDAO.getOrderList", sortTypeOrder);
 	}
 
 }
