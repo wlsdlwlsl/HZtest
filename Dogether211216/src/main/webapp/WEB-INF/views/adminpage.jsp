@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +20,7 @@
 	<script src="./resources/js/admin/common-scripts.js"></script>
 	<script src="./resources/js/admin/adminpage.js"></script>
 	<script src="./resources/js/admin/adminvalid.js"></script>
+	
 	<!--상품이미지 미리보기--------------------------------------------------------------------------------------------------------- -->
 	<script> 
 	   function setThumbnail(event) {
@@ -48,11 +48,51 @@
                     <li><a href="#adminMember" id="adminMember">회원 관리</a></li>
                     <li><a href="#adminOrder" id="adminOrder">쇼핑몰 주문 관리</a></li>
                     <li><a href="#adminProducts" id="adminProducts">쇼핑몰 상품 관리</a></li>
-                  <!--   <li><a href="gymmanagermng.do">Gym매니저 관리</a></li> -->
                 </ul>
            </ul> <!-- sidebar menu end --> 
         </div>
     </aside><!--sidebar end-->
+    
+    <!-- 내브바 -->
+    <nav>
+	   <div class="logo">
+	       <a href="index.jsp">DO<em>GETHER</em></a>
+	   </div>
+	    <div class="menu-icon">
+	       <span></span>
+	    </div>
+	</nav>
+ 	<section class="overlay-menu">
+      <div class="container" style="background:black;">
+        <div class="row">
+          <div class="main-menu">
+              <ul>
+                  <li>
+                      <a href="#">런닝구</a>
+                  </li>
+                  <li>
+                      <a href="#">Gym 예약할까</a>
+                  </li>
+                  <li>
+                      <a href="#">온라인 PT</a>
+                  </li>
+                  <li>
+                      <a href="#">자랑하기</a>
+                  </li>
+                  <li>
+                      <a href="#">BMI 측정가능 보건소</a>
+                  </li>
+                  <li>
+                      <a href="#">쇼핑몰</a>
+                  </li>
+                  <li>
+                      <a href="Mypage">마이페이지</a>
+                  </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </section> <!-- end내브 -->
 
     <!--main content start-->
     <section id="main-content" >
@@ -69,7 +109,6 @@
                             <h1 id="h1Member" style="display:none;">회원 관리 페이지</h1>
                             <h1 id="h1Order" style="display:none;">쇼핑몰 주문 관리 페이지</h1>
                             <h1 id="h1Products" style="display:none;">쇼핑몰 상품 관리 페이지</h1>
-                          <!--   <h1 id="h1Gym" style="display:none;">Gym매니저 관리 페이지</h1> -->
                             <!-- 정렬하기 -->
                             <div class="pro-sort">
                             	<!-- 런닝구 정렬 -->
@@ -140,9 +179,9 @@
 	                                <!-- 첫페이지 그래프 띄우기 -->
 	                                <table border="2" style="margin:auto; width: 100%; height:100%;">
 	                                    <tr>
-	                                        <th>회원수<br>그제 / 어제 / 오늘<br>가입자 & 탈퇴자 <br>bar차트</th>
-	                                        <th>런닝구 매칭수<br>그제 / 어제 / 오늘<br>방개설일자별로 count(*)<br>bar차트</th>
-	                                        <th>자랑하기 글수<br>개설일부터~현재까지 변동 추이(일자별)<br>line차트</th>
+	                                        <th>전체 회원수<br>그제 / 어제 / 오늘<br>가입자 & 탈퇴자 <br>bar차트</th>
+	                                        <th>전체 런닝구 매칭수<br>그제 / 어제 / 오늘<br>방개설일자별로 count(*)<br>bar차트</th>
+	                                        <th>전체 자랑하기 글수<br>개설일부터~현재까지 변동 추이(일자별)<br>line차트</th>
 	                                    </tr>
 	                                    <tr>
 	                                        <td>전체가입자수 대비 당월가입자수(그 외는 기존가입자)<br>pie차트</td>
@@ -183,28 +222,6 @@
 	                                    <table id="adminProductsList" border="2" style="display:none;">
 	                                    <!-- 여기에 ajax에서 동적으로 생성한 tr>td가 들어감 -->                                      
 										</table>		
-										<%-- <table id="totalProductList" border="2" style="display:none;">
-											<tr>
-											<th>상품이미지</th>
-											<th>상품ID</th>
-											<th>상품명</th>
-											<th>상품상세설명</th>
-											<th>상품가격</th>
-											<th>상품수정</th>
-											<th>상품삭제</th>
-										</tr>
-											<c:forEach items="${productList}" var="product">
-											<tr class="productListTR">
-												<td><img class="productInsertImage" src="./resources/img/shoppingmall/productimgs/${product.product_realfname}" /></td>
-												<td class="productID">${product.productID}</td>
-												<td class="productName">${product.productName}</td>
-												<td class="productContent">${product.productContent}</td>
-												<td class="productPrice">${product.productPrice}</td>
-												<td><button id="updateProduct" >수정</button></td>
-												<td><button id="deleteProduct" >삭제</button></td>
-											</tr>
-										</c:forEach>
-										</table>		  --%>
 										<!--  상품 추가하기 -->
 									     <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
 			                             <form method="post" id="productInput" action="productsInsert.do" target="iframe1" enctype="multipart/form-data" > 
@@ -271,22 +288,22 @@
     </section> <!-- end main content -->
 	
 	<footer id="footer">
-	    <div class="container-fluid">
-	        <div class="col-md-12">
-	        	<a href="#" class="go-top" style="margin-top:20px;"><span style="color:black;">top</span></a>
-	            <p id="ff" style="margin-left:210px;">
-	            Copyright &copy; 2018 Company Name | Designed by TemplateMo &
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <p id="ff">Copyright &copy; 2018 Company Name 
+                | Designed by TemplateMo &
 	            2018 &copy; FlatLab by VectorLab.
-				</p>
-	        </div>
-	    </div>
-	</footer>
+             </p>
+            </div>
+        </div>
+</footer>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
     <script src="resources/js/vendor/bootstrap.min.js"></script>
     <script src="resources/js/plugins.js"></script>
     <script src="resources/js/main.js"></script>
+    
 	
 </body>
 </html>

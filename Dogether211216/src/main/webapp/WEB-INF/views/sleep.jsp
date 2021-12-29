@@ -3,13 +3,14 @@
 <html lang="ko">
 <head>
     <title>Best Sleep Time in Dogether!</title>
-
     <!-- Dogether 공통 템플릿 -->
     <link rel="stylesheet" href="./resources/css/templatemo-style.css">
     <!-- 반응형 웹사이트  -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 카드형 리스트 템플릿 -->
     <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+    <!-- 헤더/푸터/내브바css -->
+	<link href="./resources/css/admin/admin.css" rel="stylesheet">
 	<!-- ajax -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
     <script type="text/javascript" src="./resources/js/sleep.js"></script>
@@ -24,6 +25,47 @@
             </div>
         </div>
     </div>
+    
+    <!-- 내브바 -->
+    <nav>
+	   <div class="logo">
+	       <a href="index.jsp">DO<em>GETHER</em></a>
+	   </div>
+	    <div class="menu-icon">
+	       <span></span>
+	    </div>
+	</nav>
+ 	<section class="overlay-menu">
+      <div class="container" style="background:black;">
+        <div class="row">
+          <div class="main-menu">
+              <ul>
+                  <li>
+                      <a href="#">런닝구</a>
+                  </li>
+                  <li>
+                      <a href="#">Gym 예약할까</a>
+                  </li>
+                  <li>
+                      <a href="#">온라인 PT</a>
+                  </li>
+                  <li>
+                      <a href="#">자랑하기</a>
+                  </li>
+                  <li>
+                      <a href="#">BMI 측정가능 보건소</a>
+                  </li>
+                  <li>
+                      <a href="#">쇼핑몰</a>
+                  </li>
+                  <li>
+                      <a href="Mypage">마이페이지</a>
+                  </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </section> <!-- end내브 -->
     
     <!-- 수면시간 추천받기 start -->
     <div class="col-12 pricing-tables" style="height:auto;">
@@ -178,5 +220,19 @@
         <a class="back" href="back.do" style="font-size: 200%; color:#CDBC67;">다른 시간 추천받기</a><br/>\
         <br><br>
     </div> <!-- end resultsNow (시간을 입력하지 않았을 떼 결과)-->
+    
+    <!-- 푸터 -->
+    <footer id="footer">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <p id="ff">Copyright &copy; 2018 Company Name 
+                | Designed by TemplateMo 
+             </p>
+            </div>
+        </div>
+	</footer>
+
+	<script src="resources/js/plugins.js"></script>
+    <script src="resources/js/main.js"></script>
 </body>
 </html>

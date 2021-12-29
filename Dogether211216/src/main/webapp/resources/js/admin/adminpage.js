@@ -1,13 +1,4 @@
 $(document).ready(function() {
-    // ################################################ 
-	// 밀리세컨드를 yyyy-mm-dd로 포
-	Date.prototype.yyyymmdd = function() {        
-        var yyyy = this.getFullYear().toString();                                   
-        var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based        
-        var dd  = this.getDate().toString();            
-        return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
-	}; 
-
    function adminRNGList(){
       $.ajax({
          type : 'get',
@@ -467,10 +458,8 @@ $(document).ready(function() {
    // ############ 상품 수정 버튼을 클릭했을 때  ############
     let isEditing = 0;
          $(document).on("click","#updateProduct",function(){
-        	alert("클릭테스트");
-            //수정다하고나서
-            let thiss = $(this);
-            console.log("isEditing"+isEditing+$(this).attr('class')+ $(this).text());
+            //수정 다하고나서
+            let thiss = $(this);		//ajax에서 this값이 success함수로 변경됨
             if(isEditing==1 && $(this).attr('class')=="updateProduct1" && $(this).text()=="완료"){
             	if(checkUpdateProduct()){
                   isEditing = 0;
@@ -499,9 +488,9 @@ $(document).ready(function() {
                           alert('상품 수정 ajax 실패!');
                        } //end error
                     }); //end ajax
-                 } //end inner if
-            	else{
-            		alert("다시 입력하세요.");
+                 } //end inner if checkUpdateProduct() 호출
+            	else{		// true가 아닐때
+//            		alert("공란 없이 입력하세요.");		
             		return;
             	}
             } //end outer if
@@ -520,42 +509,41 @@ $(document).ready(function() {
                productPrice.html("<input type='text' name='productPrice' id='productPrice' value="+ productPriceText +">");
                productName.html("<input type='text' name='productName' id='productName' value="+ productNameText +" >");
                productContent.html("<input type='text' name='productContent' id='productContent' value="+ productContentText +">");
-               $(this).attr("class","updateProduct1");
+               $(this).attr("class","updateProduct1");		// 수정버튼의 class명 변경
                $(this).text('완료');
             } //end else if
             let checkResult =  checkUpdateProduct();
-            alert("checkResult = " + checkResult);
+//            alert("checkResult = " + checkResult);
             if(checkResult == false){
             	return;
-            } //유효성검사
+            } //end //유효성검사
          }); //end click
     
-   // ################################################
-   
+   // 정렬하기################################################
     // ############ 런닝구 정렬하기를 클릭했을 때  ############
     $('#rngSort').click(function(evt){
-       evt.preventDefault();            // a태그 링크 기능 무력화
+       evt.preventDefault();               // a태그 링크 기능 무력화
        evt.stopPropagation();            // a태그 링크 기능 무력화
        adminRNGList();
     }); //end click 
     
     // ############ 자랑하기 정렬하기를 클릭했을 때  ############
     $('#bstSort').click(function(evt){
-       evt.preventDefault();            // a태그 링크 기능 무력화
+       evt.preventDefault();               // a태그 링크 기능 무력화
        evt.stopPropagation();            // a태그 링크 기능 무력화
        adminBSTList();
     }); //end click 
     
    // ############ 회원 정렬하기를 클릭했을 때  ############
     $('#memberSort').click(function(evt){
-       evt.preventDefault();            // a태그 링크 기능 무력화
+       evt.preventDefault();               // a태그 링크 기능 무력화
        evt.stopPropagation();            // a태그 링크 기능 무력화
        adminMemberList();
     }); //end click 
     
     // ############ 주문 정렬하기를 클릭했을 때  ############
     $('#orderSort').click(function(evt){
-       evt.preventDefault();            // a태그 링크 기능 무력화
+       evt.preventDefault();            	  // a태그 링크 기능 무력화
        evt.stopPropagation();            // a태그 링크 기능 무력화
        adminOrderList();
     }); //end click 
@@ -567,9 +555,6 @@ $(document).ready(function() {
     	var productPrice = document.getElementById("productPrice");
     	var productContent = document.getElementById("productContent");
     	
-		let productPriceVal = $('#productPrice').val();
-	    let productContentVal = $('#productContent').val();
-	    let productNameVal = $('#productName').val();
 		//상품명 체크
 	     if($.trim($('#productName').val())==''){
 	        alert("상품명을 입력해주세요.");
@@ -587,5 +572,13 @@ $(document).ready(function() {
 	        return false;
 	     }
 	     return true;
-    }	
+    }	//end 유효성 검사 checkUpdateProduct()
+    // ################################################ 
+	// 밀리세컨드를 yyyy-mm-dd로 포맷
+	Date.prototype.yyyymmdd = function() {        
+        var yyyy = this.getFullYear().toString();                                   
+        var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based        
+        var dd  = this.getDate().toString();            
+        return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+	}; 
 });   // end ready

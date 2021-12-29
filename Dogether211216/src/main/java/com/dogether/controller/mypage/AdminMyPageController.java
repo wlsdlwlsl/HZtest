@@ -46,9 +46,6 @@ public class AdminMyPageController {
 	public List<HashMap<String,Object>> getRNGListWithProfile(RunningGooVO sortTypeRNG) {
 		System.out.println(sortTypeRNG.getSortTypeRNG());
 		List<HashMap<String,Object>> voList = runningGooService.getRNGListWithProfile(sortTypeRNG);
-//		for(HashMap<String, Object> od : voList) {
-//			System.out.println(od.get("meetingTime")+"입니다;");
-//		}
 		System.out.println("런닝구 리스트 전달완료!!");
 		return voList;
 	}
@@ -125,7 +122,6 @@ public class AdminMyPageController {
 		System.out.println("쇼핑몰 상품 추가 요청을 받음!!");
 		int result = productService.productsInsert(vo);
 		System.out.println(result);
-//		return "redirect:adminOrder.do";
 	}
 	
 	// 상품 삭제하기
@@ -137,12 +133,12 @@ public class AdminMyPageController {
 	}
 	
 	// 상품 수정하기 (상품가격, 상품상세설명, 상품이름만)
-		@RequestMapping(value="updateProduct.do", produces="application/text; charset=UTF-8")
-		@ResponseBody
-		public void productsUpdate(ProductsVO vo) {
-			System.out.println("쇼핑몰 상품 수정 요청을 받음!!");
-			System.out.println(vo.getProductID() + vo.getProductPrice() + vo.getProductContent() + vo.getProductName());
-			productService.productsUpdate(vo);
-		}
+	@RequestMapping(value="updateProduct.do", produces="application/text; charset=UTF-8")
+	@ResponseBody
+	public void productsUpdate(ProductsVO vo) {
+		System.out.println("쇼핑몰 상품 수정 요청을 받음!!");
+		System.out.println(vo.getProductID() + vo.getProductPrice() + vo.getProductContent() + vo.getProductName());
+		productService.productsUpdate(vo);
+	}
 
 }
