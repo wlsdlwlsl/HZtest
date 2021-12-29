@@ -75,4 +75,9 @@
 		WHERE ProductID = #{productID}
 	</update>
 	
+	<select  id="getRealfname" parameterType="string" resultType="string">
+		SELECT Product_realfname FROM products
+		WHERE productID = #{productID}
+	</select>
+	
 </mapper>

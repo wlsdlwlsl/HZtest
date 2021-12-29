@@ -126,10 +126,12 @@ public class AdminMyPageController {
 	// 상품 추가하기
 	@RequestMapping("productsInsert.do")
 	@ResponseBody
-	public void productsInsert(ProductsVO vo) {
+	public List<ProductsVO> productsInsert(ProductsVO vo) {
 		System.out.println("쇼핑몰 상품 추가 요청을 받음!!");
-		int result = productService.productsInsert(vo);
-		System.out.println(result);
+		productService.productsInsert(vo);
+		List<ProductsVO> list = productService.getProductsList();
+		System.out.println("상품 추가 = "+list.size());
+		return list;
 	}
 	
 	// 상품 삭제하기

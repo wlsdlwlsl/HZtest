@@ -13,4 +13,7 @@ public interface ProductDAO {
 	public void productsDelete(ProductsVO vo);
 	//상품 수정하기
 	public void productsUpdate(ProductsVO vo);
+	
+	//real 
+	public String getRealfname(String productID);
 }

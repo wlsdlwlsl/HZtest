@@ -37,4 +37,11 @@ public class ProductServiceImpl implements ProductService{
 		productsDAO.productsUpdate(vo);
 	}
 
+	@Override
+	public String getRealfname(String productID) {
+		return productsDAO.getRealfname(productID);
+	}
+	
+	
+
 }

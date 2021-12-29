@@ -37,5 +37,10 @@ public class ProductDAOImpl implements ProductDAO{
 		System.out.println(vo.getProductID()+"삭삭1");
 		mybatis.delete("ProductsDAO.productsDelete", vo);
 	}
-	
+
+	@Override
+	public String getRealfname(String productID) {
+		System.out.println(productID+"상품명1");
+		return mybatis.selectOne("ProductsDAO.getRealfname", productID);		
+	}
 }

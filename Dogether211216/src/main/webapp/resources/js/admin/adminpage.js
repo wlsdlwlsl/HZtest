@@ -436,7 +436,6 @@ $(document).ready(function() {
          $(".divHide").hide();                       // 모든 정렬 안보이게 변경
          $(".float-right").show();            // 상품 추가하기 보이게 변경
          adminProductsList();
-//         window.location.href="adminProducts.do";
     }); //end click
     
     // ############ 상품 삭제 버튼을 클릭했을 때  ############
@@ -573,6 +572,7 @@ $(document).ready(function() {
 	     }
 	     return true;
     }	//end 유효성 검사 checkUpdateProduct()
+    
     // ################################################ 
 	// 밀리세컨드를 yyyy-mm-dd로 포맷
 	Date.prototype.yyyymmdd = function() {        
