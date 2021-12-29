@@ -21,6 +21,7 @@ import com.dogether.service.ProductService;
 import com.dogether.service.RunningGooService;
 
 @Controller
+@RequestMapping("Mypage")
 public class AdminMyPageController {
 
 	@Autowired
@@ -34,11 +35,18 @@ public class AdminMyPageController {
 	@Autowired
 	ProductService productService;
 
-	// 첫페이지로 이동
-	@RequestMapping("adminpage.do")
-	public void admin(Model model) {
+	// 인덱스에서 어드민페이지로 이동
+	@RequestMapping("/")
+	public String admin() {
 		System.out.println("관리자 페이지로 이동!!");
+		return "Mypage/adminpage";
 	}
+	
+	// 첫페이지로 이동
+		@RequestMapping("adminpage.do")
+		public void adminpage() {
+			System.out.println("첫페이지로 이동!!");
+		}
 
 	// 런닝구 list 출력 + 정렬하기
 	@RequestMapping("adminRNG.do")

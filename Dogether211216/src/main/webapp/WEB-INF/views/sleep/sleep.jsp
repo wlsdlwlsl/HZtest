@@ -4,20 +4,20 @@
 <head>
     <title>Best Sleep Time in Dogether!</title>
     <!-- Dogether 공통 템플릿 -->
-    <link rel="stylesheet" href="./resources/css/templatemo-style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/templatemo-style.css">
     <!-- 반응형 웹사이트  -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 카드형 리스트 템플릿 -->
-    <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
     <!-- 헤더/푸터/내브바css -->
-	<link href="./resources/css/admin/admin.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/admin/admin.css" rel="stylesheet">
 	<!-- ajax -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-    <script type="text/javascript" src="./resources/js/sleep.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/sleep.js"></script>
 </head>
 <body>
 	<!-- 상단 배경이미지 -->
-    <div class="more-about-us"style="background-image:url('./resources/img/sleep/sleep.jpg'); height:500px;">
+    <div class="more-about-us"style="background-image:url('${pageContext.request.contextPath}/resources/img/sleep/sleep.jpg'); height:500px;">
         <div class="container" >
         <!-- 상단 이미지 내 효과주기 -->
             <div class="col-md-5 col-md-offset-7">
@@ -232,7 +232,7 @@
         </div>
 	</footer>
 
-	<script src="resources/js/plugins.js"></script>
-    <script src="resources/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/plugins.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 </body>
 </html>

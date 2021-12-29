@@ -7,19 +7,19 @@
     <title>관리자 페이지입니다.</title>
     <!-- 공통 적용 -->
     <link rel="apple-touch-icon" href="apple-touch-icon.jpg">
-    <link rel="stylesheet" href="./resources/css/templatemo-style.css">
-    <script src="./resources/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/templatemo-style.css">
+    <script src="${pageContext.request.contextPath}/resources/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <!-- 반응형 웹페이지  -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- admin 적용 -->
-    <link href="./resources/css/admin/admin.css" rel="stylesheet">
-    <link href="./resources/css/admin/bootstrap.min.css" rel="stylesheet">
-    <link href="./resources/css/admin/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/admin/admin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/admin/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/admin/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-	<script src="./resources/js/admin/common-scripts.js"></script>
-	<script src="./resources/js/admin/adminpage.js"></script>
-	<script src="./resources/js/admin/adminvalid.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/admin/common-scripts.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/admin/adminpage.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/admin/adminvalid.js"></script>
 	
 	<!--상품이미지 미리보기--------------------------------------------------------------------------------------------------------- -->
 	<script> 
@@ -300,9 +300,9 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="resources/js/vendor/bootstrap.min.js"></script>
-    <script src="resources/js/plugins.js"></script>
-    <script src="resources/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/vendor/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/plugins.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
     
 	
 </body>

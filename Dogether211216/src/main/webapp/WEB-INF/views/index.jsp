@@ -181,7 +181,7 @@ Highway Template https://templatemo.com/tm-520-highway
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<div class="portfolio-item">
-					<a href="sleep.do" data-lightbox="image-1"><div class="thumb">
+					<a href="sleep/" data-lightbox="image-1"><div class="thumb">
 							<div class="hover-effect">
 								<div class="hover-content">
 									<h1>

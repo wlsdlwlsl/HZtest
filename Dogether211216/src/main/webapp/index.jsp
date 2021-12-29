@@ -26,7 +26,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
             	<ul class="sidebar-menu" style="padding:25px">
-                    <li><a href="adminpage.do">첫페이지</a></li>
+                    <li><a href="Mypage/">첫페이지</a></li>
                     <li><a id="adminRNG">런닝구 관리2</a></li>
                     <li><a href="boastmng.do">자랑하기 관리</a></li>
                     <li><a href="membermng.do">회원 관리</a></li>
